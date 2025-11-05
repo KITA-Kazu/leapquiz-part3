@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英語単語クイズ & ランキング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #f06d06, #ffab40);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -100px;
+            left: -100px;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -50px;
+            right: -50px;
+            animation: float 12s infinite reverse ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(20px, 20px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 700px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            color: #f06d06;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px #ffe0b2;
+        }
+
+        .score-timer {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #f06d06;
+        }
+
+        #question-area {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        #question-word {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ff8000;
+            margin-bottom: 10px;
+        }
+
+        #sentence {
+            background-color: #fff3e0;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            line-height: 1.6;
+            min-height: 80px; /* 適切な高さに調整 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap; /* 長い文章に対応 */
+        }
+
+        #sentence span.blank {
+            display: inline-block;
+            width: 100px; /* 空欄の幅 */
+            height: 1.2em; /* 空欄の高さ */
+            border-bottom: 2px dashed #ff8000;
+            margin: 0 5px;
+            vertical-align: middle;
+        }
+
+        #hint-text {
+            margin-top: 15px;
+            font-style: italic;
+            color: #666;
+            min-height: 24px;
+        }
+        
+        /* 新しく追加する意味表示用のスタイル */
+        #answer-meaning {
+            margin-top: 10px;
+            font-size: 1.1em; /* 少し小さめに調整 */
+            color: #007bff; /* 青系の色 */
+            min-height: 30px;
+            text-align: center; /* 中央寄せ */
+            line-height: 1.4;
+        }
+        #answer-meaning strong {
+            color: #ff8000; /* 単語を強調する色 */
+        }
+        #answer-meaning .meaning-line {
+            display: block; /* 各行をブロック要素にする */
+            margin-bottom: 5px; /* 行間に少しスペース */
+        }
+
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .option-button, #start-button, #next-button, #hint-button, #restart-button, #submitBtn, #reloadBtn, #firebaseStartBtn {
+            background-color: #ffab40;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .option-button:hover, #start-button:hover, #next-button:hover, #hint-button:hover, #restart-button:hover, #submitBtn:hover, #reloadBtn:hover, #firebaseStartBtn:hover {
+            background-color: #f06d06;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .option-button.correct {
+            background-color: #66bb6a; /* 緑 */
+        }
+
+        .option-button.wrong {
+            background-color: #ef5350; /* 赤 */
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        #result-screen {
+            display: none;
+            text-align: center;
+            margin-top: 20px; /* ランキングとの間にスペース */
+        }
+
+        #final-score {
+            font-size: 3em;
+            color: #f06d06;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px #ffe0b2;
+        }
+
+        /* 名前入力とランキングのスタイル */
+        .box {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px; /* 広めに */
+            margin: 20px 0;
+            background-color: #fff; /* コンテナと同じ背景色 */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .box label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        .box input {
+            padding: 10px;
+            width: calc(100% - 20px); /* 左右のpaddingを考慮 */
+            max-width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1em;
+            box-sizing: border-box; /* paddingとborderをwidthに含める */
+        }
+        .box button {
+            margin-top: 15px;
+            padding: 12px 25px;
+            font-size: 1.1em;
+        }
+        #hello {
+            display: block;
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        ol {
+            padding-left: 20px;
+            text-align: left;
+            margin-top: 15px;
+            font-size: 1.1em;
+            list-style: decimal;
+            color: #444;
+        }
+        ol li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        ol li:last-child {
+            border-bottom: none;
+        }
+        .ranking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .ranking-header h2 {
+            margin: 0;
+            color: #f06d06;
+            font-size: 1.8em;
+            text-shadow: 1px 1px #ffe0b2;
+        }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+                margin: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            #question-word {
+                font-size: 1.5em;
+            }
+            #sentence {
+                font-size: 1em;
+                padding: 15px;
+            }
+            .option-button, #start-button, #next-button, #hint-button, #restart-button, #submitBtn, #reloadBtn, #firebaseStartBtn {
+                padding: 12px 20px;
+                font-size: 1em;
+            }
+            .options {
+                grid-template-columns: 1fr; /* スマホでは1列表示 */
+            }
+            .score-timer {
+                font-size: 1em;
+            }
+            #answer-meaning {
+                font-size: 0.9em; /* スマホではさらに小さく */
+            }
+            .box input {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>英語単語クイズ！</h1>
+
+        <!-- 1) 名前入力とスタートボタン -->
+        <div class="box" id="name-input-area">
+            <label>名前（ニックネームOK）</label><br/>
+            <input id="playerName" placeholder="例）いぶき太郎" />
+            <div style="margin-top:8px">
+                <button id="firebaseStartBtn">クイズ開始</button>
+            </div>
+            <small id="hello" style="display:block;margin-top:6px;color:#666"></small>
+        </div>
+
+        <div id="quiz-screen" style="display: none;">
+            <div class="score-timer">
+                <div>スコア: <span id="score">0</span></div>
+                <div>残り時間: <span id="timer">60</span>秒</div>
+            </div>
+
+            <div id="question-area">
+                <div id="question-word"></div>
+                <div id="sentence"></div>
+                <div id="hint-text"></div>
+                <div id="answer-meaning"></div> 
+            </div>
+
+            <div class="options" id="options-container">
+                <!-- 選択肢がここに動的に追加されます -->
+            </div>
+
+            <div class="button-group">
+                <button id="hint-button">ヒント (和訳)</button>
+                <button id="next-button" disabled>次の問題</button>
+            </div>
+        </div>
+
+        <!-- 結果画面とスコア送信ボタン -->
+        <div id="result-screen">
+            <h2>タイムアップ！</h2>
+            <p>あなたの最終スコアは...</p>
+            <div id="final-score">0点</div>
+            <div class="button-group">
+                <button id="submitBtn" disabled>スコアを送信してランキングを見る</button>
+                <button id="restart-button">もう一度プレイ</button>
+            </div>
+        </div>
+
+        <!-- ランキング -->
+        <div class="box">
+            <div class="ranking-header">
+                <h2>上位5人</h2>
+                <button id="reloadBtn">更新</button>
+            </div>
+            <ol id="leaderboard"><li>ランキング読み込み中...</li></ol>
+        </div>
+    </div>
+
+<!-- Firebase公式の読み込み（CDN） -->
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  // アプリケーションの初期化
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js"; 
+  // 認証機能（匿名ログイン用）
+  import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+  // Firestoreデータベース機能（スコア保存とランキング用）
+  import {
+    getFirestore, collection, addDoc, query, orderBy, limit, getDocs, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+  // Analytics機能（もし使いたい場合）
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
+
+  // あなたのウェブアプリの Firebase 設定
+  const firebaseConfig = {
+    apiKey: "AIzaSyC9vmY_CEa09GtLbY3pXYVXDLPhSl0AZEQ", // あなたのAPIキー
+    authDomain: "test-2c6b0.firebaseapp.com",        // あなたのAuth Domain
+    projectId: "test-2c6b0",                           // あなたのProject ID
+    storageBucket: "test-2c6b0.firebasestorage.app", // あなたのStorage Bucket
+    messagingSenderId: "830185053685",                 // あなたのMessaging Sender ID
+    appId: "1:830185053685:web:7343625d183bfdf920d4bc", // あなたのApp ID
+    measurementId: "G-M8JEW1SQ5R"                    // あなたのMeasurement ID (Analyticsを使う場合のみ)
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app); // 認証サービスを初期化
+  const db   = getFirestore(app); // Firestoreサービスを初期化
+  const analytics = getAnalytics(app); // Analyticsサービスを初期化 (もし使いたい場合)
+
+  //まずは匿名ログイン
+  signInAnonymously(auth).catch(console.error);
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // ログインできたらランキングを1回読み込む
+      loadTop5();
+    }
+  });
+
+  // DOM取得 (既存の要素とFirebase関連の要素)
+const words = [
+  {
+    "en": "reception",
+    "jp": "もてなし，歓迎会",
+    "sentence": "receive a warm _______",
+    "sentence_jp": "温かい歓迎を受ける"
+  },
+  {
+    "en": "portion",
+    "jp": "食事の盛り",
+    "sentence": "a large _______ of roast beef",
+    "sentence_jp": "大盛りのローストビーフ"
+  },
+  {
+    "en": "laundry",
+    "jp": "〈米〉洗濯",
+    "sentence": "cook, clean, and do the _______",
+    "sentence_jp": "料理，掃除，洗濯をする"
+  },
+  {
+    "en": "nap",
+    "jp": "昼寝，仮眠",
+    "sentence": "I’ll just take a little _______",
+    "sentence_jp": "ちょっと_______をします"
+  },
+  {
+    "en": "wake",
+    "jp": "目が覚める",
+    "sentence": "I always _______ up at six a.m.",
+    "sentence_jp": "私はいつも午前6時に目が覚める．"
+  },
+  {
+    "en": "vending machine",
+    "jp": "自動販売機",
+    "sentence": "a soft drink _______",
+    "sentence_jp": "清涼飲料水の_______"
+  },
+  {
+    "en": "grocery",
+    "jp": "食料雑貨店",
+    "sentence": "a local _______ （store）",
+    "sentence_jp": "地元の食料雑貨店"
+  },
+  {
+    "en": "appointment",
+    "jp": "病院などの予約，面会の約束",
+    "sentence": "I have an _______ with the dentist at five",
+    "sentence_jp": "5時に歯医者の予約を入れている．"
+  },
+  {
+    "en": "consult",
+    "jp": "～に相談する",
+    "sentence": "You’d better _______ your doctor",
+    "sentence_jp": "医者に診てもらいなさい．"
+  },
+  {
+    "en": "register",
+    "jp": "～を登録する，記録する",
+    "sentence": "Koyasan is _______(ed) as a World Heritage Site.",
+    "sentence_jp": "高野山は世界遺産に登録されている．"
+  },
+  {
+    "en": "dye",
+    "jp": "～を染める",
+    "sentence": "_______ my hair brown",
+    "sentence_jp": "髪を茶色に染める"
+  },
+  {
+    "en": "subscribe",
+    "jp": "to",
+    "sentence": "_______ to the magazine",
+    "sentence_jp": "雑誌を定期購読する"
+  },
+  {
+    "en": "guarantee",
+    "jp": "～を保証する",
+    "sentence": "Freedom of speech is  _______(d) under the Constitution of Japan.",
+    "sentence_jp": "言論の自由は日本国憲法で保障されている．"
+  },
+  {
+    "en": "wipe",
+    "jp": "～を拭く",
+    "sentence": "_______ the table",
+    "sentence_jp": "テーブルを拭く"
+  },
+  {
+    "en": "sweep",
+    "jp": "床，地面を掃く",
+    "sentence": "_______ the floor with a broom",
+    "sentence_jp": "ほうきで_______を掃く"
+  },
+  {
+    "en": "transfer",
+    "jp": "電車などを乗り換える",
+    "sentence": "_______ at Rome",
+    "sentence_jp": "ローマで乗り換える"
+  },
+  {
+    "en": "divorce",
+    "jp": "離婚する",
+    "sentence": "They have  _______(d).",
+    "sentence_jp": "彼らは離婚した．"
+  },
+  {
+    "en": "fate",
+    "jp": "運命，宿命",
+    "sentence": "A terrible _______ awaited them",
+    "sentence_jp": "恐ろしい_______が彼らを待ち受けていた"
+  },
+  {
+    "en": "destiny",
+    "jp": "運命",
+    "sentence": "It was his _______ to save his nation",
+    "sentence_jp": "国を救うことが彼の_______だった"
+  },
+  {
+    "en": "flavor",
+    "jp": "風味，味〈可算〉",
+    "sentence": "ice cream with a green tea _______",
+    "sentence_jp": "抹茶味のアイスクリーム"
+  },
+  {
+    "en": "perfume",
+    "jp": "香り",
+    "sentence": "the _______ of roses",
+    "sentence_jp": "バラの香り"
+  },
+  {
+    "en": "ingredient",
+    "jp": "料理などの材料",
+    "sentence": "the  _______s of lasagne",
+    "sentence_jp": "ラザニアの材料"
+  },
+  {
+    "en": "bitter",
+    "jp": "苦い，つらい",
+    "sentence": "a _______ experience",
+    "sentence_jp": "つらい経験"
+  },
+  {
+    "en": "aisle",
+    "jp": "通路",
+    "sentence": "prefer an _______ seat to a window seat",
+    "sentence_jp": "窓側の席より_______側の席のほうが好きだ"
+  },
+  {
+    "en": "track",
+    "jp": "足跡，小道",
+    "sentence": "keep _______ of my schedule",
+    "sentence_jp": "スケジュール管理をする（スケジュールの経過を追う）"
+  },
+  {
+    "en": "district",
+    "jp": "地区",
+    "sentence": "an election _______",
+    "sentence_jp": "選挙区"
+  },
+  {
+    "en": "facility",
+    "jp": "施設，設備",
+    "sentence": "indoor sports _______",
+    "sentence_jp": "室内スポーツ_______"
+  },
+  {
+    "en": "height",
+    "jp": "高さ",
+    "sentence": "line up in order of _______",
+    "sentence_jp": "身長順に並ぶ"
+  },
+  {
+    "en": "distant",
+    "jp": "遠い",
+    "sentence": "a _______ island",
+    "sentence_jp": "_______島"
+  },
+  {
+    "en": "locate",
+    "jp": "be",
+    "sentence": "New Mexico is  _______d 2,240 meters above sea level. ",
+    "sentence_jp": "ニューメキシコは海抜2,240メートルの位置にある．"
+  },
+  {
+    "en": "occupy",
+    "jp": "～を占める",
+    "sentence": "_______ two seats on the train",
+    "sentence_jp": "電車で2つの席を占有する"
+  },
+  {
+    "en": "surround",
+    "jp": "～を取り囲む，包囲する",
+    "sentence": "a mansion  _______ed by brick walls",
+    "sentence_jp": "赤れんがの塀に囲まれたお屋敷"
+  },
+  {
+    "en": "classical",
+    "jp": "音楽，バレエ，ダンスなどでクラシックの",
+    "sentence": "_______ music",
+    "sentence_jp": "_______音楽"
+  },
+  {
+    "en": "civilization",
+    "jp": "文明",
+    "sentence": "an advanced _______",
+    "sentence_jp": "高度な_______"
+  },
+  {
+    "en": "heritage",
+    "jp": "遺産",
+    "sentence": "the cultural _______ of Japan",
+    "sentence_jp": "日本の文化_______"
+  },
+  {
+    "en": "script",
+    "jp": "台本，脚本",
+    "sentence": "a film _______",
+    "sentence_jp": "映画の_______"
+  },
+  {
+    "en": "tale",
+    "jp": "話",
+    "sentence": "a Japanese folk _______",
+    "sentence_jp": "日本の民_______"
+  },
+  {
+    "en": "literature",
+    "jp": "文学",
+    "sentence": "the Nobel Prize in _______",
+    "sentence_jp": "ノーベル文学賞"
+  },
+  {
+    "en": "tragedy",
+    "jp": "悲劇〈可算〉",
+    "sentence": "9/11 was a terrible _______",
+    "sentence_jp": "9/11（の同時多発テロ）は本当に悲劇だった．"
+  },
+  {
+    "en": "poetry",
+    "jp": "詩〈不可算〉",
+    "sentence": "learn a lot of _______ by heart",
+    "sentence_jp": "多くの詩を暗記する"
+  },
+  {
+    "en": "biography",
+    "jp": "伝記",
+    "sentence": "a _______ of Helen Keller",
+    "sentence_jp": "ヘレン・ケラーの_______"
+  },
+  {
+    "en": "term",
+    "jp": "用語，言葉",
+    "sentence": "the _______ “digital native”",
+    "sentence_jp": "『デジタルネイティブ』という言葉"
+  },
+  {
+    "en": "proverb",
+    "jp": "諺",
+    "sentence": "As the _______ goes, time flies",
+    "sentence_jp": "_______にもあるように，光陰矢の如しだ"
+  },
+  {
+    "en": "dialect",
+    "jp": "方言",
+    "sentence": "speak in the Kansai _______",
+    "sentence_jp": "関西弁で話す"
+  },
+  {
+    "en": "interpret",
+    "jp": "～を解釈する",
+    "sentence": "_______ his silence as a refusal",
+    "sentence_jp": "彼の沈黙を拒否と解釈する"
+  },
+  {
+    "en": "quote",
+    "jp": "～を引用する",
+    "sentence": "_______ a passage from the Bible",
+    "sentence_jp": "聖書の一節を（_______）"
+  },
+  {
+    "en": "literally",
+    "jp": "文字どおりに",
+    "sentence": "The word bōnen-kai _______ means “year-end party.” ",
+    "sentence_jp": "「忘年会」は_______は「年を忘れる会」を意味する"
+  },
+  {
+    "en": "indicate",
+    "jp": "データなどが～を示す",
+    "sentence": "Research _______s that the drug may harm children.",
+    "sentence_jp": "研究はその薬が子どもに害があるかもしれないことを示している．"
+  },
+  {
+    "en": "reveal",
+    "jp": "～を明らかにする，暴露する",
+    "sentence": "_______ a secret to her",
+    "sentence_jp": "彼女に秘密を漏らす（_______）"
+  },
+  {
+    "en": "announce",
+    "jp": "～を発表する",
+    "sentence": "_______ the results of the election",
+    "sentence_jp": "選挙の結果を発表する"
+  },
+  {
+    "en": "broadcast",
+    "jp": "～を放送する",
+    "sentence": "The interview with him was ______ed live",
+    "sentence_jp": "彼のインタビューは生放送された．"
+  },
+  {
+    "en": "prove",
+    "jp": "～を証明する",
+    "sentence": "_______ （that） it is false",
+    "sentence_jp": "それが偽物だと証明する"
+  },
+  {
+    "en": "advertise",
+    "jp": "～を宣伝する",
+    "sentence": "_______ the concert",
+    "sentence_jp": "コンサートを宣伝する"
+  },
+  {
+    "en": "clarify",
+    "jp": "～を明らかにする",
+    "sentence": "Let me _______ my point",
+    "sentence_jp": "言いたいことを明確にします．"
+  },
+  {
+    "en": "seek",
+    "jp": "～を求める",
+    "sentence": "_______ specialist advice",
+    "sentence_jp": "専門家の意見を求める"
+  },
+  {
+    "en": "entertain",
+    "jp": "～を楽しませる",
+    "sentence": "_______ an audience",
+    "sentence_jp": "観客を楽しませる"
+  },
+  {
+    "en": "amuse",
+    "jp": "～を楽しませる",
+    "sentence": "Sam _______d me with his cooking skills. ",
+    "sentence_jp": "サムはその料理の腕で私を驚かせた．"
+  },
+  {
+    "en": "attract",
+    "jp": "引きつける，魅了する",
+    "sentence": "The pop star’s marriage attracted media attention.",
+    "sentence_jp": "人気スターの結婚はマスコミの関心を引きつけた．"
+  },
+  {
+    "en": "fascinate",
+    "jp": "～を魅了する，～にとても興味をもたせる",
+    "sentence": "I was _______d by the Sagrada Familia.",
+    "sentence_jp": "サグラダ・ファミリアに魅了された．"
+  },
+  {
+    "en": "absorb",
+    "jp": "be",
+    "sentence": "I was _______ed in a book. ",
+    "sentence_jp": "私は本に夢中になっていた．"
+  },
+  {
+    "en": "fond",
+    "jp": "be",
+    "sentence": "I am very _______ of ramen",
+    "sentence_jp": "私はラーメンが大好きだ．"
+  },
+  {
+    "en": "scare",
+    "jp": "～を怯えさせる",
+    "sentence": "Oh!  You _______d me!",
+    "sentence_jp": "もう，びっくりしたじゃない（あなたは私を怯えさせた）．"
+  },
+  {
+    "en": "alarm",
+    "jp": "～をぎょっとさせる",
+    "sentence": "I was _______ed to hear a man shout.",
+    "sentence_jp": "男が叫ぶのを聞いて，ぎょっとした．"
+  },
+  {
+    "en": "amaze",
+    "jp": "～を驚かせる",
+    "sentence": "Sam _______d me with his cooking skills.",
+    "sentence_jp": "サムはその料理の腕で私を驚かせた．"
+  },
+  {
+    "en": "irritate",
+    "jp": "長期にわたって～をいらいらさせる",
+    "sentence": "Her habit of biting her nails _______s me. ",
+    "sentence_jp": "彼女の爪をかむ癖は私をいらいらさせる．"
+  },
+  {
+    "en": "upset",
+    "jp": "～を動揺させる",
+    "sentence": "The news _______ her",
+    "sentence_jp": "その知らせは彼女を動揺させた．"
+  },
+  {
+    "en": "puzzle",
+    "jp": "～を当惑させる",
+    "sentence": "What _______s me is why she can’t understand what I say. ",
+    "sentence_jp": "私を当惑させるのは，なぜ彼女は私の言うことが理解できないかだ．"
+  },
+  {
+    "en": "confuse",
+    "jp": "～を混乱させる，困惑させる",
+    "sentence": "His reply _______d me. ",
+    "sentence_jp": "彼の返答は私を困惑させた．"
+  },
+  {
+    "en": "bore",
+    "jp": "～をうんざりさせる，退屈させる",
+    "sentence": "I was _______d with his long speech. ",
+    "sentence_jp": "彼の長い話にうんざりした．"
+  },
+  {
+    "en": "frustrate",
+    "jp": "～を欲求不満にさせる",
+    "sentence": "I felt _______d that I couldn't express myself well. ",
+    "sentence_jp": "うまく表現できなくてもどかしい思いをした．"
+  },
+  {
+    "en": "disappoint",
+    "jp": "～を失望させる",
+    "sentence": "I was _______ed with the soccer game. ",
+    "sentence_jp": "サッカーの試合にがっかりした．"
+  },
+  {
+    "en": "embarrass",
+    "jp": "～に恥ずかしい思いをさせる，困惑させる",
+    "sentence": "I was _______ed at dinner.",
+    "sentence_jp": "夕食時，フォークを使い間違えて恥ずかしかった．"
+  },
+  {
+    "en": "ashamed",
+    "jp": "恥ずかしい",
+    "sentence": "I’m _______ of hurting her feelings",
+    "sentence_jp": "彼女の気持ちを傷つけたことを恥じている．"
+  },
+  {
+    "en": "hesitate",
+    "jp": "ためらう",
+    "sentence": "Please do not _______ to contact me if you have any questions",
+    "sentence_jp": "質問があればどうぞご遠慮なく連絡して（連絡するのをためらわないで）ください．"
+  },
+  {
+    "en": "reluctant",
+    "jp": "to",
+    "sentence": "I was _______ to go with him",
+    "sentence_jp": "彼と一緒に行くのは気が進まなかった．"
+  },
+  {
+    "en": "tremble",
+    "jp": "震える",
+    "sentence": "The little girl was _______(ing) with fear. ",
+    "sentence_jp": "その少女は恐怖で震えていた．"
+  },
+  {
+    "en": "boast",
+    "jp": "自慢する",
+    "sentence": "_______ about how clever my son is",
+    "sentence_jp": "私の息子がどれほど賢いかを自慢する"
+  },
+  {
+    "en": "jealous",
+    "jp": "of",
+    "sentence": "be _______ of his promotion",
+    "sentence_jp": "彼の昇進が妬ましい"
+  },
+  {
+    "en": "envy",
+    "jp": "～を羨ましく思う",
+    "sentence": "_______ him for his wealth",
+    "sentence_jp": "財産のことで彼を羨ましく思う"
+  },
+  {
+    "en": "yell",
+    "jp": "叫ぶ，大声をあげる",
+    "sentence": "_______ at the children to be quiet",
+    "sentence_jp": "子どもたちに静かにせよと𠮟る（大声で言う）"
+  },
+  {
+    "en": "respect",
+    "jp": "人を尊敬する",
+    "sentence": "_______ Gandhi",
+    "sentence_jp": "ガンジーを尊敬する"
+  },
+  {
+    "en": "despair",
+    "jp": "絶望",
+    "sentence": "a deep sense of _______",
+    "sentence_jp": "深い_______感"
+  },
+  {
+    "en": "emotion",
+    "jp": "特に強い感情〈可算〉",
+    "sentence": "show my _______s ",
+    "sentence_jp": "感情を表に出す"
+  },
+  {
+    "en": "sympathy",
+    "jp": "同情",
+    "sentence": "have deep _______ for the victims",
+    "sentence_jp": "犠牲者たちに本当に同情する"
+  },
+  {
+    "en": "shame",
+    "jp": "残念なこと",
+    "sentence": "It’s a _______ that you didn’t see that movie",
+    "sentence_jp": "あなたがその映画を見ていないのは残念です．"
+  },
+  {
+    "en": "confidence",
+    "jp": "自信",
+    "sentence": "boost my _______",
+    "sentence_jp": "（私の）自信を高める"
+  },
+  {
+    "en": "courage",
+    "jp": "勇気",
+    "sentence": "have the _______ to say no",
+    "sentence_jp": "断る_______を持つ"
+  },
+  {
+    "en": "passion",
+    "jp": "情熱",
+    "sentence": "have a _______ for music",
+    "sentence_jp": "音楽への_______を持っている"
+  },
+  {
+    "en": "sorrow",
+    "jp": "悲しみ",
+    "sentence": "experience the joys and _______s of life ",
+    "sentence_jp": "人生の苦楽を経験する"
+  },
+  {
+    "en": "ignore",
+    "jp": "人，物を無視する",
+    "sentence": "completely _______ him",
+    "sentence_jp": "完全に彼を無視する"
+  },
+  {
+    "en": "offend",
+    "jp": "人，物が～を怒らせる，～の気分を害する",
+    "sentence": "His jokes _______ed Irish people. ",
+    "sentence_jp": "彼の冗談はアイルランドの_______たちを怒らせた"
+  },
+  {
+    "en": "depress",
+    "jp": "～を憂うつにさせる，落ち込ませる",
+    "sentence": "The rainy weather _______ed me.",
+    "sentence_jp": "雨天ですっかり気がめいってしまった（私を落ち込ませた）．"
+  },
+  {
+    "en": "owe",
+    "jp": "A",
+    "sentence": "I _______ my success to him",
+    "sentence_jp": "私の成功は彼のおかげだ．"
+  },
+  {
+    "en": "fear",
+    "jp": "恐怖",
+    "sentence": "overcome my _______ of snakes",
+    "sentence_jp": "ヘビに対する恐怖を克服する"
+  },
+  {
+    "en": "method",
+    "jp": "方法",
+    "sentence": "a _______ for reducing stress",
+    "sentence_jp": "ストレスを減らすやり方"
+  },
+  {
+    "en": "media",
+    "jp": "情報伝達手段，媒体，メディア",
+    "sentence": "receive a great deal of _______ attention",
+    "sentence_jp": "メディアにとても注目される"
+  },
+  {
+    "en": "means",
+    "jp": "手段〈単複同形〉",
+    "sentence": "a _______ of communication",
+    "sentence_jp": "意思疎通の手段"
+  },
+  {
+    "en": "extent",
+    "jp": "程度",
+    "sentence": "You are correct to some _______",
+    "sentence_jp": "君はある_______正しい"
+  },
+  {
+    "en": "extremely",
+    "jp": "極度に，非常に",
+    "sentence": "It’s _______ hot outside",
+    "sentence_jp": "外はひどく暑い．"
+  },
+  {
+    "en": "total",
+    "jp": "全体の",
+    "sentence": "the _______ cost",
+    "sentence_jp": "総費用"
+  },
+  {
+    "en": "largely",
+    "jp": "大部分は",
+    "sentence": "Our customers are _______ women",
+    "sentence_jp": "私たちのお客様は大部分が女性だ．"
+  },
+  {
+    "en": "moderate",
+    "jp": "適度な，節度のある",
+    "sentence": "get _______ exercise",
+    "sentence_jp": "_______運動をする"
+  },
+  {
+    "en": "somewhat",
+    "jp": "いくぶん",
+    "sentence": "feel _______ sad",
+    "sentence_jp": "_______悲しい気分だ"
+  },
+  {
+    "en": "subtle",
+    "jp": "かすかな",
+    "sentence": "a _______ difference in meaning",
+    "sentence_jp": "_______意味の違い"
+  },
+  {
+    "en": "possibly",
+    "jp": "ひょっとすると",
+    "sentence": "It will take two weeks, _______ longer ",
+    "sentence_jp": "2週間，ひょっとしたらそれ以上かかるかもしれない．"
+  },
+  {
+    "en": "eventually",
+    "jp": "最終的に，ついに",
+    "sentence": "After changing jobs many times, I _______ got a job in a bank",
+    "sentence_jp": "何度も転職を繰り返したあと，_______，銀行に就職しました"
+  },
+  {
+    "en": "necessarily",
+    "jp": "not",
+    "sentence": "Rich people are not _______ happy",
+    "sentence_jp": "金持ちが必ずしも幸せとは限らない．"
+  },
+  {
+    "en": "frankly",
+    "jp": "率直に",
+    "sentence": "talk _______ with a friend",
+    "sentence_jp": "友だちと_______話し合う"
+  },
+  {
+    "en": "ironically",
+    "jp": "皮肉なことに",
+    "sentence": "_______, my car was stolen in front of the police station",
+    "sentence_jp": "_______，私の車は警察署の真ん前で盗まれた"
+  },
+  {
+    "en": "moreover",
+    "jp": "その上",
+    "sentence": "Smoking is bad for you. ________, it costs a lot",
+    "sentence_jp": "喫煙は体に悪い．_______お金がかかる"
+  },
+  {
+    "en": "otherwise",
+    "jp": "さもなければ",
+    "sentence": "Hurry up; _______ you’ll be late",
+    "sentence_jp": "急げ！さもないと遅れるぞ．"
+  },
+  {
+    "en": "regardless",
+    "jp": "of",
+    "sentence": "_______ of gender, race, or nationality",
+    "sentence_jp": "性別，民族，国籍とは無関係に"
+  },
+  {
+    "en": "worth",
+    "jp": "～の価値がある",
+    "sentence": "This ring is _______ over two million dollars",
+    "sentence_jp": "この指輪は200万ドル以上の価値がある．"
+  },
+  {
+    "en": "according to",
+    "jp": "調査，人の話などによれば",
+    "sentence": "_______ a public poll",
+    "sentence_jp": "世論_______"
+  },
+  {
+    "en": "despite",
+    "jp": "～にもかかわらず",
+    "sentence": "The soccer match was held _______ the heavy rain",
+    "sentence_jp": "大雨にもかかわらず，そのサッカーの試合は行われた．"
+  }
+];
+  const nameInput = document.getElementById("playerName");
+  const firebaseStartBtn = document.getElementById("firebaseStartBtn"); // Firebase用のスタートボタン
+  const hello = document.getElementById("hello");
+
+  const quizScreen = document.getElementById('quiz-screen');
+  const resultScreen = document.getElementById('result-screen');
+  const scoreSpan = document.getElementById('score');
+  const timerSpan = document.getElementById('timer');
+  const questionWordDiv = document.getElementById('question-word');
+  const sentenceDiv = document.getElementById('sentence');
+  const hintTextDiv = document.getElementById('hint-text');
+  const optionsContainer = document.getElementById('options-container');
+  const hintButton = document.getElementById('hint-button');
+  const nextButton = document.getElementById('next-button');
+  const restartButton = document.getElementById('restart-button');
+  const finalScoreDiv = document.getElementById('final-score');
+  const answerMeaningDiv = document.getElementById('answer-meaning'); 
+
+  // Firebaseランキング関連DOM
+  const submitBtn = document.getElementById("submitBtn");
+  const leaderboard = document.getElementById("leaderboard");
+  const reloadBtn = document.getElementById("reloadBtn");
+  const nameInputArea = document.getElementById("name-input-area"); // 名前入力エリア全体の要素
+
+  let currentScore = 0; // クイズのスコア
+  let timeLeft = 60;
+  let timerInterval;
+  let currentQuestion = null;
+  let usedWords = [];
+  let hintUsed = false;
+  let questionActive = false; // 問題がアクティブかどうか
+
+  // --- クイズのロジック ---
+  function getRandomWords(count, excludeWord = null) {
+      const availableForOptions = words.filter(word => word.en !== excludeWord);
+      const shuffled = [...availableForOptions].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, count);
+  }
+
+  function displayQuestion() {
+      if (usedWords.length === words.length) {
+          usedWords = [];
+      }
+
+      let availableWords = words.filter(word => !usedWords.includes(word.en));
+      if (availableWords.length === 0) {
+           availableWords = words;
+           usedWords = [];
+      }
+
+      const randomIndex = Math.floor(Math.random() * availableWords.length);
+      currentQuestion = availableWords[randomIndex];
+      usedWords.push(currentQuestion.en);
+
+      sentenceDiv.innerHTML = currentQuestion.sentence.replace(currentQuestion.en, '<span class="blank"></span>');
+      hintTextDiv.textContent = '';
+      answerMeaningDiv.textContent = ''; 
+
+      hintUsed = false;
+      hintButton.disabled = false;
+      nextButton.disabled = true;
+
+      const correctWord = currentQuestion.en;
+      const options = getRandomWords(3, correctWord);
+      options.push(currentQuestion);
+      options.sort(() => Math.random() - 0.5);
+
+      optionsContainer.innerHTML = '';
+      options.forEach(option => {
+          const button = document.createElement('button');
+          button.classList.add('option-button');
+          button.textContent = option.en;
+          button.dataset.word = option.en;
+          button.onclick = () => checkAnswer(button, option.en === correctWord);
+          optionsContainer.appendChild(button);
+      });
+      questionActive = true;
+      enableOptionButtons();
+  }
+
+  function disableOptionButtons() {
+      const buttons = document.querySelectorAll('.option-button');
+      buttons.forEach(button => {
+          button.disabled = true;
+      });
+  }
+
+  function enableOptionButtons() {
+      const buttons = document.querySelectorAll('.option-button');
+      buttons.forEach(button => {
+          button.disabled = false;
+      });
+  }
+
+  function checkAnswer(selectedButton, isCorrect) {
+      if (!questionActive) return;
+
+      disableOptionButtons();
+      questionActive = false;
+      hintButton.disabled = true;
+
+      if (isCorrect) {
+          selectedButton.classList.add('correct');
+          currentScore += hintUsed ? 1 : 2;
+      } else {
+          selectedButton.classList.add('wrong');
+          currentScore -= 2;
+          const correctButton = Array.from(optionsContainer.children).find(btn => btn.dataset.word === currentQuestion.en);
+          if (correctButton) {
+              correctButton.classList.add('correct');
+          }
+      }
+      const filledSentenceJp = currentQuestion.sentence_jp.replace('_______', `<strong>${currentQuestion.en}</strong>`);
+      answerMeaningDiv.innerHTML = `<span class="meaning-line">意味: ${currentQuestion.jp}</span><span class="meaning-line">用例: ${filledSentenceJp}</span>`;
+      
+      scoreSpan.textContent = currentScore;
+      nextButton.disabled = false;
+  }
+
+  function startTimer() {
+      timeLeft = 60;
+      timerSpan.textContent = timeLeft;
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+          timeLeft--;
+          timerSpan.textContent = timeLeft;
+          if (timeLeft <= 0) {
+              clearInterval(timerInterval);
+              endGame();
+          }
+      }, 1000);
+  }
+
+  function endGame() {
+      quizScreen.style.display = 'none';
+      resultScreen.style.display = 'block';
+      finalScoreDiv.textContent = currentScore + '点';
+      clearInterval(timerInterval);
+      submitBtn.disabled = false; // スコア送信ボタンを有効にする
+  }
+
+  function resetGame() {
+      currentScore = 0;
+      scoreSpan.textContent = currentScore;
+      timeLeft = 60;
+      timerSpan.textContent = timeLeft;
+      usedWords = [];
+      hintUsed = false;
+      questionActive = false;
+      clearInterval(timerInterval);
+      hintTextDiv.textContent = '';
+      answerMeaningDiv.innerHTML = '';
+      optionsContainer.innerHTML = '';
+      submitBtn.disabled = true; // ゲームリセット時は送信ボタンを無効に
+  }
+
+  // --- イベントリスナーの修正・統合 ---
+  firebaseStartBtn.addEventListener('click', () => {
+      const name = (nameInput.value || "").trim();
+      if (!name) { alert("名前を入れてな"); return; }
+      hello.textContent = `がんばってな、${name}さん！`;
+      
+      nameInputArea.style.display = 'none'; // 名前入力エリアを非表示
+      quizScreen.style.display = 'block'; // クイズ画面を表示
+
+      resetGame();
+      startTimer();
+      displayQuestion();
+  });
+
+  nextButton.addEventListener('click', () => {
+      if (timeLeft > 0) {
+          displayQuestion();
+      } else {
+          endGame();
+      }
+  });
+
+  hintButton.addEventListener('click', () => {
+      if (currentQuestion && !hintUsed && questionActive) {
+          const hintSentenceJp = currentQuestion.sentence_jp.replace('_______', '_______');
+          hintTextDiv.innerHTML = `ヒント: ${currentQuestion.jp} (用例: ${hintSentenceJp})`;
+          hintUsed = true;
+          hintButton.disabled = true;
+      }
+  });
+
+  restartButton.addEventListener('click', () => {
+      resultScreen.style.display = 'none';
+      nameInputArea.style.display = 'block'; // 名前入力エリアを再表示
+      // クイズ開始は firebaseStartBtn から行うため、直接クイズ画面には行かない
+      resetGame(); // ゲームの状態をリセット
+      hello.textContent = ''; // がんばってなメッセージもリセット
+  });
+
+  // --- Firebaseランキング関連ロジック ---
+  // スコア送信
+  submitBtn.addEventListener("click", async () => {
+    const name = (nameInput.value || "").trim() || "名無し";
+    if (currentScore == null) { alert("スコアがありません。"); return; } // 安全策
+    // Firestoreへ追加
+    try {
+      await addDoc(collection(db, "scores3"), {
+        name,
+        score: currentScore,
+        createdAt: serverTimestamp()
+      });
+      submitBtn.disabled = true; // 送信後は再度送信できないようにする
+      await loadTop5();
+      alert("スコアを送信したで！ランキングに反映されたか見てみてな");
+    } catch (error) {
+      console.error("スコアの送信に失敗しました:", error);
+      alert("スコアの送信に失敗しました。もう一度お試しください。");
+    }
+  });
+
+  // 上位5を読み込んで表示
+  async function loadTop5() {
+    leaderboard.innerHTML = '<li>ランキング読み込み中...</li>'; // 読み込み中の表示
+    try {
+      const ref = collection(db, "scores3");
+      const q = query(ref, orderBy("score", "desc"), orderBy("createdAt", "asc"), limit(5));
+      const snap = await getDocs(q);
+      const rows = snap.docs.map((d, i) => {
+        const r = d.data();
+        // createdAtはnullの場合があるので、その場合は適当な文字列にするか、フィルターする
+        const timestamp = r.createdAt ? new Date(r.createdAt.seconds * 1000).toLocaleString('ja-JP') : '日付不明';
+        return `<li>${i+1}. ${escapeHtml(r.name)} — ${r.score}点 (${timestamp})</li>`;
+      });
+      leaderboard.innerHTML = rows.length ? rows.join("") : "<li>まだ誰もいません</li>";
+    } catch (error) {
+      console.error("ランキングの読み込みに失敗しました:", error);
+      leaderboard.innerHTML = '<li>ランキングの読み込みに失敗しました。</li>';
+    }
+  }
+
+  reloadBtn.addEventListener("click", loadTop5);
+
+  // かんたんエスケープ（XSS対策の最低限）
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+
+  // 初期表示設定
+  nameInputArea.style.display = 'block';
+  quizScreen.style.display = 'none';
+  resultScreen.style.display = 'none';
+  resetGame(); // 初回ロード時にゲーム状態を初期化
+</script>
+ </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
