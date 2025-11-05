@@ -392,694 +392,2404 @@
   // DOM取得 (既存の要素とFirebase関連の要素)
 const words = [
   {
-    "en": "reception",
-    "jp": "もてなし，歓迎会",
-    "sentence": "receive a warm _______",
-    "sentence_jp": "温かい歓迎を受ける"
+    "en": "propose",
+    "jp": "①～を提案する ②（to ～）（～に）結婚を申し込む",
+    "sentence": "_______ a new program",
+    "sentence_jp": "新しい計画を提案する"
   },
   {
-    "en": "portion",
-    "jp": "食事の盛り",
-    "sentence": "a large _______ of roast beef",
-    "sentence_jp": "大盛りのローストビーフ"
+    "en": "dismiss",
+    "jp": "①（意見や考えなど）を退ける ②～を解雇する",
+    "sentence": "_______ his proposal as unrealistic",
+    "sentence_jp": "非現実的だとして彼の提案を退ける"
   },
   {
-    "en": "laundry",
-    "jp": "〈米〉洗濯",
-    "sentence": "cook, clean, and do the _______",
-    "sentence_jp": "料理，掃除，洗濯をする"
+    "en": "bless",
+    "jp": "～を祝福する",
+    "sentence": "（God） _______ you!",
+    "sentence_jp": "お大事に（神があなたを祝福しますように）．"
   },
   {
-    "en": "nap",
-    "jp": "昼寝，仮眠",
-    "sentence": "I’ll just take a little _______",
-    "sentence_jp": "ちょっと_______をします"
+    "en": "glory",
+    "jp": "栄光",
+    "sentence": "his _______ days as a college basketball star",
+    "sentence_jp": "大学バスケットボールのスター選手としての彼の栄光の日々"
   },
   {
-    "en": "wake",
-    "jp": "目が覚める",
-    "sentence": "I always _______ up at six a.m.",
-    "sentence_jp": "私はいつも午前6時に目が覚める．"
+    "en": "compliment",
+    "jp": "①褒め言葉，賛辞 ②～を褒める",
+    "sentence": "_______ on his shoes",
+    "sentence_jp": "彼の靴への褒め言葉"
   },
   {
-    "en": "vending machine",
-    "jp": "自動販売機",
-    "sentence": "a soft drink _______",
-    "sentence_jp": "清涼飲料水の_______"
+    "en": "feast",
+    "jp": "①宴会，祝宴 ②とても楽しいこと，喜ばせるもの",
+    "sentence": "the wedding _______",
+    "sentence_jp": "結婚式の宴席"
   },
   {
-    "en": "grocery",
-    "jp": "食料雑貨店",
-    "sentence": "a local _______ （store）",
-    "sentence_jp": "地元の食料雑貨店"
+    "en": "declare",
+    "jp": "①～を宣言する ②（税関や税務署で）～を申告する",
+    "sentence": "Do you have anything to _______?",
+    "sentence_jp": "申告するものはありますか．"
   },
   {
-    "en": "appointment",
-    "jp": "病院などの予約，面会の約束",
-    "sentence": "I have an _______ with the dentist at five",
-    "sentence_jp": "5時に歯医者の予約を入れている．"
+    "en": "highlight",
+    "jp": "①～を強調する ②呼び物，目玉商品，ハイライト",
+    "sentence": "_______ the issue of global warming",
+    "sentence_jp": "地球温暖化の問題を強調する"
   },
   {
-    "en": "consult",
-    "jp": "～に相談する",
-    "sentence": "You’d better _______ your doctor",
-    "sentence_jp": "医者に診てもらいなさい．"
+    "en": "imply",
+    "jp": "～をほのめかす，（暗に）～を意味する",
+    "sentence": "_______ implied that he would resign.",
+    "sentence_jp": "アレックスは辞意をほのめかした．"
   },
   {
-    "en": "register",
-    "jp": "～を登録する，記録する",
-    "sentence": "Koyasan is _______(ed) as a World Heritage Site.",
-    "sentence_jp": "高野山は世界遺産に登録されている．"
+    "en": "recite",
+    "jp": "～を暗唱する",
+    "sentence": "_______ a poem",
+    "sentence_jp": "詩を暗唱する"
   },
   {
-    "en": "dye",
-    "jp": "～を染める",
-    "sentence": "_______ my hair brown",
-    "sentence_jp": "髪を茶色に染める"
+    "en": "ray",
+    "jp": "①光線 ②放射線 ③（a － of）一縷の，わずかな",
+    "sentence": "the sun’s _______",
+    "sentence_jp": "太陽光線"
   },
   {
-    "en": "subscribe",
-    "jp": "to",
-    "sentence": "_______ to the magazine",
-    "sentence_jp": "雑誌を定期購読する"
+    "en": "radiation",
+    "jp": "放射線",
+    "sentence": "The workers were exposed to _______.",
+    "sentence_jp": "その労働者たちは被ばくした（放射線にさらされた）．"
   },
   {
-    "en": "guarantee",
-    "jp": "～を保証する",
-    "sentence": "Freedom of speech is  _______(d) under the Constitution of Japan.",
-    "sentence_jp": "言論の自由は日本国憲法で保障されている．"
+    "en": "laboratory",
+    "jp": "研究室，研究所",
+    "sentence": "_______ experiments",
+    "sentence_jp": "研究室での実験"
   },
   {
-    "en": "wipe",
-    "jp": "～を拭く",
-    "sentence": "_______ the table",
-    "sentence_jp": "テーブルを拭く"
+    "en": "oxygen",
+    "jp": "酸素",
+    "sentence": "Water is made up of _______ and hydrogen.",
+    "sentence_jp": "水は酸素と水素からできている．"
   },
   {
-    "en": "sweep",
-    "jp": "床，地面を掃く",
-    "sentence": "_______ the floor with a broom",
-    "sentence_jp": "ほうきで_______を掃く"
+    "en": "molecule",
+    "jp": "分子",
+    "sentence": "a water _______",
+    "sentence_jp": "水分子"
   },
   {
-    "en": "transfer",
-    "jp": "電車などを乗り換える",
-    "sentence": "_______ at Rome",
-    "sentence_jp": "ローマで乗り換える"
+    "en": "compound",
+    "jp": "①化合物 ②複合的な",
+    "sentence": "a chemical _______",
+    "sentence_jp": "化合物"
   },
   {
-    "en": "divorce",
-    "jp": "離婚する",
-    "sentence": "They have  _______(d).",
-    "sentence_jp": "彼らは離婚した．"
+    "en": "tissue",
+    "jp": "①組織 ②ティッシュペーパー",
+    "sentence": "nerve _______",
+    "sentence_jp": "神経組織"
   },
   {
-    "en": "fate",
-    "jp": "運命，宿命",
-    "sentence": "A terrible _______ awaited them",
-    "sentence_jp": "恐ろしい_______が彼らを待ち受けていた"
+    "en": "cell",
+    "jp": "①細胞 ②電池 ③独房 （①②③いずれも〈可算〉)",
+    "sentence": "remove the cancerous _______",
+    "sentence_jp": "がん細胞を除去する"
   },
   {
-    "en": "destiny",
-    "jp": "運命",
-    "sentence": "It was his _______ to save his nation",
-    "sentence_jp": "国を救うことが彼の_______だった"
+    "en": "gene",
+    "jp": "遺伝子〈可算〉",
+    "sentence": "the _______ for black hair",
+    "sentence_jp": "黒い髪の遺伝子"
   },
   {
-    "en": "flavor",
-    "jp": "風味，味〈可算〉",
-    "sentence": "ice cream with a green tea _______",
-    "sentence_jp": "抹茶味のアイスクリーム"
+    "en": "substance",
+    "jp": "①物質 ②本質，根拠〈不可算〉",
+    "sentence": "a cancer-causing _______",
+    "sentence_jp": "発がん性物質"
   },
   {
-    "en": "perfume",
-    "jp": "香り",
-    "sentence": "the _______ of roses",
-    "sentence_jp": "バラの香り"
+    "en": "solid",
+    "jp": "①固体の ②がっしりした，ぎっしり詰まった ③固体",
+    "sentence": "_______ fuel",
+    "sentence_jp": "固形燃料"
   },
   {
-    "en": "ingredient",
-    "jp": "料理などの材料",
-    "sentence": "the  _______s of lasagne",
-    "sentence_jp": "ラザニアの材料"
+    "en": "satellite",
+    "jp": "①（月などの）衛星 ②人工衛星",
+    "sentence": "Jupiter’s sixth _______",
+    "sentence_jp": "木星の6番目の衛星"
   },
   {
-    "en": "bitter",
-    "jp": "苦い，つらい",
-    "sentence": "a _______ experience",
-    "sentence_jp": "つらい経験"
+    "en": "orbit",
+    "jp": "①軌道 ②（惑星などが）～を周回する",
+    "sentence": "the moon’s _______ around the earth",
+    "sentence_jp": "地球を回る月の軌道"
   },
   {
-    "en": "aisle",
-    "jp": "通路",
-    "sentence": "prefer an _______ seat to a window seat",
-    "sentence_jp": "窓側の席より_______側の席のほうが好きだ"
+    "en": "launch",
+    "jp": "①（ロケットなど）を打ち上げる ②（運動，事業など）を始める ③打ち上げ，開始，発売",
+    "sentence": "_______ a Sun probe",
+    "sentence_jp": "太陽探査機を打ち上げる"
   },
   {
-    "en": "track",
-    "jp": "足跡，小道",
-    "sentence": "keep _______ of my schedule",
-    "sentence_jp": "スケジュール管理をする（スケジュールの経過を追う）"
+    "en": "attempt",
+    "jp": "①試み ②（to do）（～しようと）試みる",
+    "sentence": "make an _______ to break his record",
+    "sentence_jp": "彼の記録を破ろうと試みる"
   },
   {
-    "en": "district",
-    "jp": "地区",
-    "sentence": "an election _______",
-    "sentence_jp": "選挙区"
+    "en": "capacity",
+    "jp": "①能力 ②容量，収容力",
+    "sentence": "have a remarkable _______ to learn language",
+    "sentence_jp": "目立った言語学習能力を有している"
   },
   {
-    "en": "facility",
-    "jp": "施設，設備",
-    "sentence": "indoor sports _______",
-    "sentence_jp": "室内スポーツ_______"
+    "en": "capable",
+    "jp": "①（of ～）（～する）力がある ②有能な",
+    "sentence": "This factory is _______ of producing 100 cars per hour.",
+    "sentence_jp": "この工場では1時間に100台もの車を生産できる．"
   },
   {
-    "en": "height",
-    "jp": "高さ",
-    "sentence": "line up in order of _______",
-    "sentence_jp": "身長順に並ぶ"
+    "en": "attain",
+    "jp": "①（人が主語）～を達成する ②（物，人が主語）～に到達する",
+    "sentence": "I have _______ my ideal weight.",
+    "sentence_jp": "私は理想とする体重に達した．"
   },
   {
-    "en": "distant",
-    "jp": "遠い",
-    "sentence": "a _______ island",
-    "sentence_jp": "_______島"
+    "en": "desperate",
+    "jp": "①必死の ②（状況が）絶望的な",
+    "sentence": "make a _______ effort to succeed",
+    "sentence_jp": "成功するために必死の努力をする"
   },
   {
-    "en": "locate",
-    "jp": "be",
-    "sentence": "New Mexico is  _______d 2,240 meters above sea level. ",
-    "sentence_jp": "ニューメキシコは海抜2,240メートルの位置にある．"
+    "en": "dedicate",
+    "jp": "（A to B）（A）を（Bに）捧げる",
+    "sentence": "_______ dedicated herself to her work.",
+    "sentence_jp": "彼女は仕事に没頭した（仕事に自分自身を捧げた）．"
   },
   {
-    "en": "occupy",
-    "jp": "～を占める",
-    "sentence": "_______ two seats on the train",
-    "sentence_jp": "電車で2つの席を占有する"
+    "en": "pain",
+    "jp": "①苦痛 ②（－s）苦労",
+    "sentence": "Do you feel any _______?",
+    "sentence_jp": "〈医者の発言〉痛みはありますか．"
   },
   {
-    "en": "surround",
-    "jp": "～を取り囲む，包囲する",
-    "sentence": "a mansion  _______ed by brick walls",
-    "sentence_jp": "赤れんがの塀に囲まれたお屋敷"
+    "en": "strain",
+    "jp": "①（心身の）負担，無理 ②（目や筋肉など）を痛める",
+    "sentence": "work under a lot of _______",
+    "sentence_jp": "過度の負担の下で働く"
   },
   {
-    "en": "classical",
-    "jp": "音楽，バレエ，ダンスなどでクラシックの",
-    "sentence": "_______ music",
-    "sentence_jp": "_______音楽"
+    "en": "remedy",
+    "jp": "①治療法，治療薬 ②改善策，対策（①②いずれも〈可算〉）",
+    "sentence": "a _______ for colds",
+    "sentence_jp": "かぜの治療法"
   },
   {
-    "en": "civilization",
-    "jp": "文明",
-    "sentence": "an advanced _______",
-    "sentence_jp": "高度な_______"
+    "en": "pharmacy",
+    "jp": "（調剤）薬局",
+    "sentence": "buy medicine at a nearby _______",
+    "sentence_jp": "近くの薬局で薬を買う"
   },
   {
-    "en": "heritage",
-    "jp": "遺産",
-    "sentence": "the cultural _______ of Japan",
-    "sentence_jp": "日本の文化_______"
+    "en": "physician",
+    "jp": "①〈米〉医師 ②〈英〉内科医",
+    "sentence": "emergency _______",
+    "sentence_jp": "救急医"
   },
   {
-    "en": "script",
-    "jp": "台本，脚本",
-    "sentence": "a film _______",
-    "sentence_jp": "映画の_______"
+    "en": "disorder",
+    "jp": "（心身の）不調",
+    "sentence": "eating _______",
+    "sentence_jp": "摂食障害"
   },
   {
-    "en": "tale",
-    "jp": "話",
-    "sentence": "a Japanese folk _______",
-    "sentence_jp": "日本の民_______"
+    "en": "pregnant",
+    "jp": "妊娠した",
+    "sentence": "Terry is three-months _______.",
+    "sentence_jp": "テリーは妊娠3か月だ．"
   },
   {
-    "en": "literature",
-    "jp": "文学",
-    "sentence": "the Nobel Prize in _______",
-    "sentence_jp": "ノーベル文学賞"
+    "en": "clinical",
+    "jp": "臨床の",
+    "sentence": "a _______ test",
+    "sentence_jp": "臨床試験"
   },
   {
-    "en": "tragedy",
-    "jp": "悲劇〈可算〉",
-    "sentence": "9/11 was a terrible _______",
-    "sentence_jp": "9/11（の同時多発テロ）は本当に悲劇だった．"
+    "en": "heal",
+    "jp": "①～を治す ②治る",
+    "sentence": "_______ people by laying my hands on their bodies",
+    "sentence_jp": "体に手を当てて人々を治す"
   },
   {
-    "en": "poetry",
-    "jp": "詩〈不可算〉",
-    "sentence": "learn a lot of _______ by heart",
-    "sentence_jp": "多くの詩を暗記する"
+    "en": "infect",
+    "jp": "（人，動物，地域）に感染させる，伝染する",
+    "sentence": "My dog was _______ with a virus.",
+    "sentence_jp": "うちのイヌはウイルスに感染した（感染させられた）．"
   },
   {
-    "en": "biography",
-    "jp": "伝記",
-    "sentence": "a _______ of Helen Keller",
-    "sentence_jp": "ヘレン・ケラーの_______"
+    "en": "ankle",
+    "jp": "足首",
+    "sentence": "twist my _______",
+    "sentence_jp": "足首をひねる"
   },
   {
-    "en": "term",
-    "jp": "用語，言葉",
-    "sentence": "the _______ “digital native”",
-    "sentence_jp": "『デジタルネイティブ』という言葉"
+    "en": "thumb",
+    "jp": "親指",
+    "sentence": "stick up my _______",
+    "sentence_jp": "親指を立てる"
   },
   {
-    "en": "proverb",
-    "jp": "諺",
-    "sentence": "As the _______ goes, time flies",
-    "sentence_jp": "_______にもあるように，光陰矢の如しだ"
+    "en": "forehead",
+    "jp": "額，おでこ",
+    "sentence": "I’ve got a pimple on my _______.",
+    "sentence_jp": "（私の）おでこににきびができた．"
   },
   {
-    "en": "dialect",
-    "jp": "方言",
-    "sentence": "speak in the Kansai _______",
-    "sentence_jp": "関西弁で話す"
+    "en": "chin",
+    "jp": "下あご，あごの先端",
+    "sentence": "stick out my _______",
+    "sentence_jp": "あごを突き出す"
   },
   {
-    "en": "interpret",
-    "jp": "～を解釈する",
-    "sentence": "_______ his silence as a refusal",
-    "sentence_jp": "彼の沈黙を拒否と解釈する"
+    "en": "chest",
+    "jp": "①胸（部） ②（大きな木の）箱，密閉容器",
+    "sentence": "have a _______ X-ray examination",
+    "sentence_jp": "胸部のレントゲン検査を受ける"
   },
   {
-    "en": "quote",
-    "jp": "～を引用する",
-    "sentence": "_______ a passage from the Bible",
-    "sentence_jp": "聖書の一節を（_______）"
+    "en": "breast",
+    "jp": "（主に女性の）胸，乳房",
+    "sentence": "early detection of _______ cancer",
+    "sentence_jp": "乳がんの早期発見"
   },
   {
-    "en": "literally",
-    "jp": "文字どおりに",
-    "sentence": "The word bōnen-kai _______ means “year-end party.” ",
-    "sentence_jp": "「忘年会」は_______は「年を忘れる会」を意味する"
+    "en": "lung",
+    "jp": "肺〈可算〉",
+    "sentence": "the heart and the _______",
+    "sentence_jp": "（ヒトの）心肺"
   },
   {
-    "en": "indicate",
-    "jp": "データなどが～を示す",
-    "sentence": "Research _______s that the drug may harm children.",
-    "sentence_jp": "研究はその薬が子どもに害があるかもしれないことを示している．"
+    "en": "organ",
+    "jp": "①臓器，（動植物の）器官 ②（楽器）オルガン（①②ともに〈可算〉）",
+    "sentence": "wait for an _______ transplant",
+    "sentence_jp": "臓器移植を待つ"
   },
   {
-    "en": "reveal",
-    "jp": "～を明らかにする，暴露する",
-    "sentence": "_______ a secret to her",
-    "sentence_jp": "彼女に秘密を漏らす（_______）"
+    "en": "vision",
+    "jp": "①視力，視野 ②未来像 ③未来を見通す力，先見の明",
+    "sentence": "have good[normal， poor] _______",
+    "sentence_jp": "視力が良い［正常だ，悪い］"
   },
   {
-    "en": "announce",
-    "jp": "～を発表する",
-    "sentence": "_______ the results of the election",
-    "sentence_jp": "選挙の結果を発表する"
+    "en": "skeleton",
+    "jp": "骸骨，骨格",
+    "sentence": "a model of the human _______",
+    "sentence_jp": "ヒトの骸骨の模型"
   },
   {
-    "en": "broadcast",
-    "jp": "～を放送する",
-    "sentence": "The interview with him was ______ed live",
-    "sentence_jp": "彼のインタビューは生放送された．"
+    "en": "sensation",
+    "jp": "①感覚 ②（説明し難い）感情",
+    "sentence": "lose all _______ in my toes",
+    "sentence_jp": "足の指先の感覚がなくなる"
   },
   {
-    "en": "prove",
-    "jp": "～を証明する",
-    "sentence": "_______ （that） it is false",
-    "sentence_jp": "それが偽物だと証明する"
+    "en": "code",
+    "jp": "①（服装などの）規定 ②暗号",
+    "sentence": "Does the restaurant have a dress _______?",
+    "sentence_jp": "そのレストランには服装規定はありますか．"
   },
   {
-    "en": "advertise",
-    "jp": "～を宣伝する",
-    "sentence": "_______ the concert",
-    "sentence_jp": "コンサートを宣伝する"
+    "en": "agenda",
+    "jp": "議題，協議事項",
+    "sentence": "the _______ for today’s meeting",
+    "sentence_jp": "本日の会議の議題"
   },
   {
-    "en": "clarify",
-    "jp": "～を明らかにする",
-    "sentence": "Let me _______ my point",
-    "sentence_jp": "言いたいことを明確にします．"
+    "en": "liberty",
+    "jp": "自由",
+    "sentence": "fight for _______ and equality",
+    "sentence_jp": "自由と平等のために戦う"
   },
   {
-    "en": "seek",
-    "jp": "～を求める",
-    "sentence": "_______ specialist advice",
-    "sentence_jp": "専門家の意見を求める"
+    "en": "committee",
+    "jp": "委員会",
+    "sentence": "the International Olympic _______",
+    "sentence_jp": "国際オリンピック委員会"
   },
   {
-    "en": "entertain",
-    "jp": "～を楽しませる",
-    "sentence": "_______ an audience",
-    "sentence_jp": "観客を楽しませる"
+    "en": "humanity",
+    "jp": "①（集合的に）人類 ②（the －ies）人文科学 ③人間性",
+    "sentence": "a crime against _______",
+    "sentence_jp": "人類に対する犯罪"
   },
   {
-    "en": "amuse",
-    "jp": "～を楽しませる",
-    "sentence": "Sam _______d me with his cooking skills. ",
-    "sentence_jp": "サムはその料理の腕で私を驚かせた．"
+    "en": "mankind",
+    "jp": "（集合的に）人類",
+    "sentence": "in the history of _______",
+    "sentence_jp": "人類の歴史において"
   },
   {
-    "en": "attract",
-    "jp": "引きつける，魅了する",
-    "sentence": "The pop star’s marriage attracted media attention.",
-    "sentence_jp": "人気スターの結婚はマスコミの関心を引きつけた．"
+    "en": "authority",
+    "jp": "①権威 ②権力 ③（－ies）当局",
+    "sentence": "an _______ on orthodóntics",
+    "sentence_jp": "歯科矯正学の権威"
   },
   {
-    "en": "fascinate",
-    "jp": "～を魅了する，～にとても興味をもたせる",
-    "sentence": "I was _______d by the Sagrada Familia.",
-    "sentence_jp": "サグラダ・ファミリアに魅了された．"
+    "en": "justice",
+    "jp": "正義",
+    "sentence": "have a strong sense of _______",
+    "sentence_jp": "正義感が強い"
   },
   {
-    "en": "absorb",
-    "jp": "be",
-    "sentence": "I was _______ed in a book. ",
-    "sentence_jp": "私は本に夢中になっていた．"
+    "en": "insurance",
+    "jp": "保険〈不可算〉",
+    "sentence": "have[buy] health _______",
+    "sentence_jp": "健康保険に入っている［入る］"
   },
   {
-    "en": "fond",
-    "jp": "be",
-    "sentence": "I am very _______ of ramen",
-    "sentence_jp": "私はラーメンが大好きだ．"
+    "en": "hardship",
+    "jp": "（主に経済的）苦難",
+    "sentence": "suffer financial _______",
+    "sentence_jp": "お金で苦労する（経済的苦難に苦しむ）"
   },
   {
-    "en": "scare",
-    "jp": "～を怯えさせる",
-    "sentence": "Oh!  You _______d me!",
-    "sentence_jp": "もう，びっくりしたじゃない（あなたは私を怯えさせた）．"
+    "en": "poverty",
+    "jp": "貧困〈不可算〉",
+    "sentence": "live below the _______ line",
+    "sentence_jp": "最低（貧困）水準以下の暮らしをする"
   },
   {
-    "en": "alarm",
-    "jp": "～をぎょっとさせる",
-    "sentence": "I was _______ed to hear a man shout.",
-    "sentence_jp": "男が叫ぶのを聞いて，ぎょっとした．"
+    "en": "chaos",
+    "jp": "大混乱，混沌〈不可算〉",
+    "sentence": "The kitchen is in _______.",
+    "sentence_jp": "台所がめちゃくちゃ（大混乱）だ．"
   },
   {
-    "en": "amaze",
-    "jp": "～を驚かせる",
-    "sentence": "Sam _______d me with his cooking skills.",
-    "sentence_jp": "サムはその料理の腕で私を驚かせた．"
+    "en": "isolation",
+    "jp": "孤立，分離，孤独感",
+    "sentence": "in _______ from society",
+    "sentence_jp": "社会から孤立して"
   },
   {
-    "en": "irritate",
-    "jp": "長期にわたって～をいらいらさせる",
-    "sentence": "Her habit of biting her nails _______s me. ",
-    "sentence_jp": "彼女の爪をかむ癖は私をいらいらさせる．"
+    "en": "region",
+    "jp": "地域",
+    "sentence": "a wine-producing _______",
+    "sentence_jp": "ワインの生産地域"
   },
   {
-    "en": "upset",
-    "jp": "～を動揺させる",
-    "sentence": "The news _______ her",
-    "sentence_jp": "その知らせは彼女を動揺させた．"
+    "en": "proof",
+    "jp": "①証拠，証明〈不可算〉 ②（複合語で）～を防ぐ，～に耐える",
+    "sentence": "There is no _______ that she was at home at that time.",
+    "sentence_jp": "彼女がその時家にいたという証拠はない．"
   },
   {
-    "en": "puzzle",
-    "jp": "～を当惑させる",
-    "sentence": "What _______s me is why she can’t understand what I say. ",
-    "sentence_jp": "私を当惑させるのは，なぜ彼女は私の言うことが理解できないかだ．"
+    "en": "warranty",
+    "jp": "保証",
+    "sentence": "My microwave oven was under _______, so the repair was free.",
+    "sentence_jp": "私の電子レンジは保証期間中だったので，修理は無料だった．"
   },
   {
-    "en": "confuse",
-    "jp": "～を混乱させる，困惑させる",
-    "sentence": "His reply _______d me. ",
-    "sentence_jp": "彼の返答は私を困惑させた．"
+    "en": "principle",
+    "jp": "①原理，原則 ②主義，信念",
+    "sentence": "in _______",
+    "sentence_jp": "原則的には"
   },
   {
-    "en": "bore",
-    "jp": "～をうんざりさせる，退屈させる",
-    "sentence": "I was _______d with his long speech. ",
-    "sentence_jp": "彼の長い話にうんざりした．"
+    "en": "origin",
+    "jp": "起源",
+    "sentence": "the _______ of life on Earth",
+    "sentence_jp": "地球上の生命の起源"
   },
   {
-    "en": "frustrate",
-    "jp": "～を欲求不満にさせる",
-    "sentence": "I felt _______d that I couldn't express myself well. ",
-    "sentence_jp": "うまく表現できなくてもどかしい思いをした．"
+    "en": "setting",
+    "jp": "①環境，状況 ②（小説，機械などの）設定，舞台 （①②ともに〈可算〉）",
+    "sentence": "a perfect _______ for a picnic",
+    "sentence_jp": "ピクニックにはうってつけの環境"
   },
   {
-    "en": "disappoint",
-    "jp": "～を失望させる",
-    "sentence": "I was _______ed with the soccer game. ",
-    "sentence_jp": "サッカーの試合にがっかりした．"
+    "en": "mission",
+    "jp": "①任務，使命 ②使節団 ③（主にキリスト教の）布教（団）",
+    "sentence": "a _______ to Saturn",
+    "sentence_jp": "土星への（飛行）任務"
   },
   {
-    "en": "embarrass",
-    "jp": "～に恥ずかしい思いをさせる，困惑させる",
-    "sentence": "I was _______ed at dinner.",
-    "sentence_jp": "夕食時，フォークを使い間違えて恥ずかしかった．"
+    "en": "project",
+    "jp": "①計画，企画 ②（予算など）を見積もる ③～を投影する",
+    "sentence": "the outline of the new _______",
+    "sentence_jp": "新企画の概要"
   },
   {
-    "en": "ashamed",
-    "jp": "恥ずかしい",
-    "sentence": "I’m _______ of hurting her feelings",
-    "sentence_jp": "彼女の気持ちを傷つけたことを恥じている．"
+    "en": "monument",
+    "jp": "記念碑，遺跡，史跡",
+    "sentence": "put up a _______",
+    "sentence_jp": "記念碑を建てる"
   },
   {
-    "en": "hesitate",
-    "jp": "ためらう",
-    "sentence": "Please do not _______ to contact me if you have any questions",
-    "sentence_jp": "質問があればどうぞご遠慮なく連絡して（連絡するのをためらわないで）ください．"
+    "en": "revolution",
+    "jp": "革命",
+    "sentence": "a _______ in health care",
+    "sentence_jp": "医療の大改革"
   },
   {
-    "en": "reluctant",
-    "jp": "to",
-    "sentence": "I was _______ to go with him",
-    "sentence_jp": "彼と一緒に行くのは気が進まなかった．"
+    "en": "contract",
+    "jp": "①契約 ②～を契約する ③（病気）に感染する",
+    "sentence": "sign a _______ with the team",
+    "sentence_jp": "そのチームと契約をする"
   },
   {
-    "en": "tremble",
-    "jp": "震える",
-    "sentence": "The little girl was _______(ing) with fear. ",
-    "sentence_jp": "その少女は恐怖で震えていた．"
+    "en": "infrastructure",
+    "jp": "インフラ，基幹施設",
+    "sentence": "improve the tourism _______",
+    "sentence_jp": "観光インフラを整備する"
   },
   {
-    "en": "boast",
-    "jp": "自慢する",
-    "sentence": "_______ about how clever my son is",
-    "sentence_jp": "私の息子がどれほど賢いかを自慢する"
+    "en": "negotiate",
+    "jp": "①（with ～）（～と）交渉する ②（交渉の上で，条件など）を取り決める",
+    "sentence": "_______ with kidnappers",
+    "sentence_jp": "誘拐犯と交渉する"
   },
   {
-    "en": "jealous",
-    "jp": "of",
-    "sentence": "be _______ of his promotion",
-    "sentence_jp": "彼の昇進が妬ましい"
+    "en": "cooperate",
+    "jp": "（with ～）（～と）協力する，（in ～）（～を）協力する",
+    "sentence": "_______ all cooperated in preparing for the cultural festival.",
+    "sentence_jp": "私たち全員で協力して文化祭の準備をした．"
   },
   {
-    "en": "envy",
-    "jp": "～を羨ましく思う",
-    "sentence": "_______ him for his wealth",
-    "sentence_jp": "財産のことで彼を羨ましく思う"
+    "en": "restore",
+    "jp": "①（治安など）を回復する ②（古い建物，絵など）を修復する",
+    "sentence": "_______ peace in the Middle East",
+    "sentence_jp": "中東での平和を回復する"
   },
   {
-    "en": "yell",
-    "jp": "叫ぶ，大声をあげる",
-    "sentence": "_______ at the children to be quiet",
-    "sentence_jp": "子どもたちに静かにせよと𠮟る（大声で言う）"
+    "en": "found",
+    "jp": "～を創立する",
+    "sentence": "Our school was _______ in 1918.",
+    "sentence_jp": "我が校は1918年に創立された．"
   },
   {
-    "en": "respect",
-    "jp": "人を尊敬する",
-    "sentence": "_______ Gandhi",
-    "sentence_jp": "ガンジーを尊敬する"
+    "en": "conservative",
+    "jp": "保守的な",
+    "sentence": "the _______ Party",
+    "sentence_jp": "保守党"
   },
   {
-    "en": "despair",
-    "jp": "絶望",
-    "sentence": "a deep sense of _______",
-    "sentence_jp": "深い_______感"
+    "en": "affair",
+    "jp": "①（－s）情勢 ②（スキャンダラスな）事件 ③ 情事，浮気",
+    "sentence": "international _______",
+    "sentence_jp": "国際情勢"
   },
   {
-    "en": "emotion",
-    "jp": "特に強い感情〈可算〉",
-    "sentence": "show my _______s ",
-    "sentence_jp": "感情を表に出す"
+    "en": "agency",
+    "jp": "①（政府）機関 ②代理店",
+    "sentence": "the Central Intelligence _______（CIA）",
+    "sentence_jp": "アメリカ中央情報局"
   },
   {
-    "en": "sympathy",
-    "jp": "同情",
-    "sentence": "have deep _______ for the victims",
-    "sentence_jp": "犠牲者たちに本当に同情する"
+    "en": "council",
+    "jp": "議会",
+    "sentence": "the city _______",
+    "sentence_jp": "市議会"
   },
   {
-    "en": "shame",
-    "jp": "残念なこと",
-    "sentence": "It’s a _______ that you didn’t see that movie",
-    "sentence_jp": "あなたがその映画を見ていないのは残念です．"
+    "en": "kingdom",
+    "jp": "①（the ～ kingdom）～界，社会 ②王国",
+    "sentence": "the animal _______",
+    "sentence_jp": "動物界"
   },
   {
-    "en": "confidence",
-    "jp": "自信",
-    "sentence": "boost my _______",
-    "sentence_jp": "（私の）自信を高める"
+    "en": "republic",
+    "jp": "共和国",
+    "sentence": "the People’s _______ of China",
+    "sentence_jp": "中華人民共和国"
   },
   {
-    "en": "courage",
-    "jp": "勇気",
-    "sentence": "have the _______ to say no",
-    "sentence_jp": "断る_______を持つ"
+    "en": "empire",
+    "jp": "帝国",
+    "sentence": "the fall of the Roman _______",
+    "sentence_jp": "ローマ帝国の崩壊"
   },
   {
-    "en": "passion",
-    "jp": "情熱",
-    "sentence": "have a _______ for music",
-    "sentence_jp": "音楽への_______を持っている"
+    "en": "aid",
+    "jp": "援助，救援物資〈不可算〉",
+    "sentence": "give economic _______ to developing countries",
+    "sentence_jp": "発展途上国へ経済援助を行う"
   },
   {
-    "en": "sorrow",
-    "jp": "悲しみ",
-    "sentence": "experience the joys and _______s of life ",
-    "sentence_jp": "人生の苦楽を経験する"
+    "en": "reform",
+    "jp": "改革",
+    "sentence": "the government’s educational _______（s）",
+    "sentence_jp": "政府の教育改革"
   },
   {
-    "en": "ignore",
-    "jp": "人，物を無視する",
-    "sentence": "completely _______ him",
-    "sentence_jp": "完全に彼を無視する"
+    "en": "minister",
+    "jp": "①大臣 ②牧師",
+    "sentence": "the foreign _______",
+    "sentence_jp": "外務大臣"
   },
   {
-    "en": "offend",
-    "jp": "人，物が～を怒らせる，～の気分を害する",
-    "sentence": "His jokes _______ed Irish people. ",
-    "sentence_jp": "彼の冗談はアイルランドの_______たちを怒らせた"
+    "en": "parliament",
+    "jp": "議会",
+    "sentence": "summon[dissolve] a _______",
+    "sentence_jp": "議会を招集する［解散する］"
   },
   {
-    "en": "depress",
-    "jp": "～を憂うつにさせる，落ち込ませる",
-    "sentence": "The rainy weather _______ed me.",
-    "sentence_jp": "雨天ですっかり気がめいってしまった（私を落ち込ませた）．"
+    "en": "territory",
+    "jp": "①領土 ②（動物などの）縄張り，（学問などの）領域",
+    "sentence": "Dogs use urine to mark their _______.",
+    "sentence_jp": "イヌはオシッコをすることで自分の縄張りを示す．"
   },
   {
-    "en": "owe",
-    "jp": "A",
-    "sentence": "I _______ my success to him",
-    "sentence_jp": "私の成功は彼のおかげだ．"
+    "en": "poll",
+    "jp": "①（政治関連の）世論調査 ②投票 ③（票）を得る",
+    "sentence": "recent opinion _______",
+    "sentence_jp": "最近の世論調査"
   },
   {
-    "en": "fear",
-    "jp": "恐怖",
-    "sentence": "overcome my _______ of snakes",
-    "sentence_jp": "ヘビに対する恐怖を克服する"
+    "en": "fortune",
+    "jp": "①財産 ②運",
+    "sentence": "make a _______ in real estate",
+    "sentence_jp": "不動産で一財産を作る"
   },
   {
-    "en": "method",
-    "jp": "方法",
-    "sentence": "a _______ for reducing stress",
-    "sentence_jp": "ストレスを減らすやり方"
+    "en": "property",
+    "jp": "①（主に集合的）財産，資産 ②（物質の）特性 ③（建物を含む）所有地",
+    "sentence": "intellectual _______",
+    "sentence_jp": "知的財産"
   },
   {
-    "en": "media",
-    "jp": "情報伝達手段，媒体，メディア",
-    "sentence": "receive a great deal of _______ attention",
-    "sentence_jp": "メディアにとても注目される"
+    "en": "fund",
+    "jp": "①（－s）資金 ②基金 ③～に資金を出す",
+    "sentence": "manage _______ effectively",
+    "sentence_jp": "資金を有効に活用する"
   },
   {
-    "en": "means",
-    "jp": "手段〈単複同形〉",
-    "sentence": "a _______ of communication",
-    "sentence_jp": "意思疎通の手段"
+    "en": "stock",
+    "jp": "①株（式） ②在庫品，蓄え",
+    "sentence": "make money on the _______ market",
+    "sentence_jp": "株（式市場）でもうける"
   },
   {
-    "en": "extent",
-    "jp": "程度",
-    "sentence": "You are correct to some _______",
-    "sentence_jp": "君はある_______正しい"
+    "en": "labor",
+    "jp": "①労働 ②（集合的に）労働者 ③努力，陣痛",
+    "sentence": "manual _______",
+    "sentence_jp": "肉体労働"
   },
   {
-    "en": "extremely",
-    "jp": "極度に，非常に",
-    "sentence": "It’s _______ hot outside",
-    "sentence_jp": "外はひどく暑い．"
+    "en": "overwork",
+    "jp": "①働きすぎる ②～を働かせすぎる，酷使する ③過労",
+    "sentence": "stop _______",
+    "sentence_jp": "働き過ぎをやめる"
   },
   {
-    "en": "total",
-    "jp": "全体の",
-    "sentence": "the _______ cost",
-    "sentence_jp": "総費用"
+    "en": "firm",
+    "jp": "①会社 ②（土台，信念などが）固い ③（体が）引き締まった",
+    "sentence": "a law _______",
+    "sentence_jp": "法律事務所"
   },
   {
-    "en": "largely",
-    "jp": "大部分は",
-    "sentence": "Our customers are _______ women",
-    "sentence_jp": "私たちのお客様は大部分が女性だ．"
+    "en": "union",
+    "jp": "①労働組合 ②合併 ③連邦",
+    "sentence": "a _______ member",
+    "sentence_jp": "労働組合員"
   },
   {
-    "en": "moderate",
-    "jp": "適度な，節度のある",
-    "sentence": "get _______ exercise",
-    "sentence_jp": "_______運動をする"
+    "en": "administration",
+    "jp": "①経営，運営 ②行政 ③政権 （①②は〈不可算〉）",
+    "sentence": "school _______",
+    "sentence_jp": "学校運営"
   },
   {
-    "en": "somewhat",
-    "jp": "いくぶん",
-    "sentence": "feel _______ sad",
-    "sentence_jp": "_______悲しい気分だ"
+    "en": "secretary",
+    "jp": "①秘書 ②（米国の各省の）長官，事務局長",
+    "sentence": "a _______ to the president",
+    "sentence_jp": "社長秘書"
   },
   {
-    "en": "subtle",
-    "jp": "かすかな",
-    "sentence": "a _______ difference in meaning",
-    "sentence_jp": "_______意味の違い"
+    "en": "editor",
+    "jp": "（新聞，雑誌などの）編集長，（書籍の）編集者",
+    "sentence": "the _______ of The Japan News",
+    "sentence_jp": "『ジャパンニュース』の編集長"
   },
   {
-    "en": "possibly",
-    "jp": "ひょっとすると",
-    "sentence": "It will take two weeks, _______ longer ",
-    "sentence_jp": "2週間，ひょっとしたらそれ以上かかるかもしれない．"
+    "en": "client",
+    "jp": "①依頼人 ②（サービス業の）取引先",
+    "sentence": "The lawyer met a _______ yesterday.",
+    "sentence_jp": "その弁護士は依頼人と昨日会った．"
   },
   {
-    "en": "eventually",
-    "jp": "最終的に，ついに",
-    "sentence": "After changing jobs many times, I _______ got a job in a bank",
-    "sentence_jp": "何度も転職を繰り返したあと，_______，銀行に就職しました"
+    "en": "recruit",
+    "jp": "①（団体・組織が）～を新規採用する ②新兵，新人",
+    "sentence": "_______ a new band member",
+    "sentence_jp": "新規のバンドのメンバーを入れる"
   },
   {
-    "en": "necessarily",
-    "jp": "not",
-    "sentence": "Rich people are not _______ happy",
-    "sentence_jp": "金持ちが必ずしも幸せとは限らない．"
+    "en": "basis",
+    "jp": "①基礎，根拠 ②（on a ～ basis）（～を）基準（として）",
+    "sentence": "on the _______ of a new theory",
+    "sentence_jp": "新しい理論を根拠にして"
   },
   {
-    "en": "frankly",
-    "jp": "率直に",
-    "sentence": "talk _______ with a friend",
-    "sentence_jp": "友だちと_______話し合う"
+    "en": "element",
+    "jp": "①（最も重要な）要素，（化学の）元素 ②（the －s）自然の力，悪天候 ③（an － of ～）少しの～",
+    "sentence": "a key _______ of his success",
+    "sentence_jp": "彼の成功のかぎとなる要素"
   },
   {
-    "en": "ironically",
-    "jp": "皮肉なことに",
-    "sentence": "_______, my car was stolen in front of the police station",
-    "sentence_jp": "_______，私の車は警察署の真ん前で盗まれた"
+    "en": "constitute",
+    "jp": "①（主語が複数）～を構成する ②（主語が単数）～である",
+    "sentence": "Fifty states _______ the USA.",
+    "sentence_jp": "50の州が米国を構成している．"
   },
   {
-    "en": "moreover",
-    "jp": "その上",
-    "sentence": "Smoking is bad for you. ________, it costs a lot",
-    "sentence_jp": "喫煙は体に悪い．_______お金がかかる"
+    "en": "unify",
+    "jp": "～を統一する",
+    "sentence": "_______ the country",
+    "sentence_jp": "国を統一する"
   },
   {
-    "en": "otherwise",
-    "jp": "さもなければ",
-    "sentence": "Hurry up; _______ you’ll be late",
-    "sentence_jp": "急げ！さもないと遅れるぞ．"
+    "en": "combine",
+    "jp": "①（A with B） （A）を（Bと）結びつける，同時に行う ②結びつく",
+    "sentence": "_______ a diet with exercise",
+    "sentence_jp": "ダイエットを運動と結びつける"
   },
   {
-    "en": "regardless",
-    "jp": "of",
-    "sentence": "_______ of gender, race, or nationality",
-    "sentence_jp": "性別，民族，国籍とは無関係に"
+    "en": "unite",
+    "jp": "①団結する ②～を団結させる",
+    "sentence": "_______ in fighting poverty",
+    "sentence_jp": "貧困撲滅で団結する"
   },
   {
-    "en": "worth",
-    "jp": "～の価値がある",
-    "sentence": "This ring is _______ over two million dollars",
-    "sentence_jp": "この指輪は200万ドル以上の価値がある．"
+    "en": "link",
+    "jp": "①関連，つながり ②（A to B）（A）を（B に）関連づける",
+    "sentence": "a strong _______ between reading and academic success",
+    "sentence_jp": "読書と学業の成功との強い関連"
   },
   {
-    "en": "according to",
-    "jp": "調査，人の話などによれば",
-    "sentence": "_______ a public poll",
-    "sentence_jp": "世論_______"
+    "en": "relevant",
+    "jp": "関連のある，重要な",
+    "sentence": "Your arguments are not _______ to this discussion.",
+    "sentence_jp": "君の主張はこの議論と関連がない．"
   },
   {
-    "en": "despite",
-    "jp": "～にもかかわらず",
-    "sentence": "The soccer match was held _______ the heavy rain",
-    "sentence_jp": "大雨にもかかわらず，そのサッカーの試合は行われた．"
+    "en": "murder",
+    "jp": "①殺人 ②（形容詞的に）殺人の ③（計画的に）～を殺す",
+    "sentence": "a brutal _______",
+    "sentence_jp": "残忍な殺人"
+  },
+  {
+    "en": "arrest",
+    "jp": "①～を逮捕する ②逮捕，（医学用語）停止",
+    "sentence": "_______ a man for shoplifting",
+    "sentence_jp": "万引きで男を逮捕する"
+  },
+  {
+    "en": "prison",
+    "jp": "刑務所",
+    "sentence": "Eric is in _______.",
+    "sentence_jp": "エリックは服役中（刑務所の中）だ．"
+  },
+  {
+    "en": "vice",
+    "jp": "①（売春，麻薬などの）犯罪〈不可算〉 ②悪徳 ③副～",
+    "sentence": "fight against _______ on the streets",
+    "sentence_jp": "街の犯罪と戦う"
+  },
+  {
+    "en": "witness",
+    "jp": "①目撃者，証人 ②証言 ③～を目撃する",
+    "sentence": "the only _______ to the murder",
+    "sentence_jp": "その殺人の唯一の目撃者"
+  },
+  {
+    "en": "bullet",
+    "jp": "弾丸",
+    "sentence": "The _______ passed through his right leg.",
+    "sentence_jp": "弾丸は彼の右足を貫通した．"
+  },
+  {
+    "en": "sword",
+    "jp": "剣",
+    "sentence": "a double-edged _______",
+    "sentence_jp": "諸刃の剣"
+  },
+  {
+    "en": "wound",
+    "jp": "①傷 ②～を傷つける",
+    "sentence": "The _______ still hurts.",
+    "sentence_jp": "傷がまだ痛む．"
+  },
+  {
+    "en": "triumph",
+    "jp": "①勝利 ②勝利する",
+    "sentence": "her _______ in the election",
+    "sentence_jp": "選挙での彼女の勝利"
+  },
+  {
+    "en": "military",
+    "jp": "軍事的な",
+    "sentence": "use _______ forces",
+    "sentence_jp": "軍事力を使う"
+  },
+  {
+    "en": "strategy",
+    "jp": "戦略",
+    "sentence": "a _______ for winning the game",
+    "sentence_jp": "その試合に勝つための戦略"
+  },
+  {
+    "en": "conquer",
+    "jp": "①（国や地域）を征服する ②（病気や恐怖など）を克服する",
+    "sentence": "The Normans _______ England in 1066.",
+    "sentence_jp": "1066年，ノルマン人はイングランドを征服した．"
+  },
+  {
+    "en": "defend",
+    "jp": "（A from B）（BからA）を守る",
+    "sentence": "learn karate to _______ myself",
+    "sentence_jp": "自分の身を守るために空手を習う"
+  },
+  {
+    "en": "dominate",
+    "jp": "～を支配する",
+    "sentence": "_______ is dominated by his wife.",
+    "sentence_jp": "ドナルドは奥さんの尻に敷かれている（奥さんに支配されている）．"
+  },
+  {
+    "en": "rob",
+    "jp": "①（銀行など）を襲う ②（A of B）（A）から（Bを）奪う",
+    "sentence": "_______ pirates robbed the ship.",
+    "sentence_jp": "海賊はその船を襲った．"
+  },
+  {
+    "en": "deprive",
+    "jp": "（A of B） （A）から（Bを）奪う",
+    "sentence": "_______ was deprived of her civil rights.",
+    "sentence_jp": "ダイアナは公民権を剥奪された．"
+  },
+  {
+    "en": "devastate",
+    "jp": "①（町など）を壊滅させる ②（人）を打ちのめす",
+    "sentence": "_______ city was devastated by a big earthquake.",
+    "sentence_jp": "その都市は大地震で壊滅した（壊滅させられた）．"
+  },
+  {
+    "en": "crash",
+    "jp": "①激突する ②（飛行機が）墜落する ③激突，墜落",
+    "sentence": "_______ into the barrier",
+    "sentence_jp": "ガードレールに激突する"
+  },
+  {
+    "en": "hazard",
+    "jp": "危険（になり得るもの）〈可算〉",
+    "sentence": "Steep stairs can be a _______ for elderly people.",
+    "sentence_jp": "急な階段は高齢者にとって危険（なもの）になり得る．"
+  },
+  {
+    "en": "debris",
+    "jp": "破片，残骸",
+    "sentence": "clear space _______",
+    "sentence_jp": "宇宙ゴミを片付ける"
+  },
+  {
+    "en": "orphan",
+    "jp": "孤児",
+    "sentence": "a war _______",
+    "sentence_jp": "戦争孤児"
+  },
+  {
+    "en": "slave",
+    "jp": "①奴隷 ②（to ～）（比喩的に）（～の）奴隷",
+    "sentence": "free the _______",
+    "sentence_jp": "奴隷を解放する"
+  },
+  {
+    "en": "acquaintance",
+    "jp": "①知人 ②面識，（ちょっとした）知識",
+    "sentence": "an old _______",
+    "sentence_jp": "昔からの知り合い"
+  },
+  {
+    "en": "merchant",
+    "jp": "商人",
+    "sentence": "a wine _______",
+    "sentence_jp": "ワイン店を営む人"
+  },
+  {
+    "en": "resident",
+    "jp": "①住人，居住者 ②滞在者 ③住んでいる",
+    "sentence": "Parking spaces are for _______ only.",
+    "sentence_jp": "駐車スペースは居住者専用です．"
+  },
+  {
+    "en": "crew",
+    "jp": "①（集合的に）乗組員 ②（取材などの）チーム",
+    "sentence": "passengers and _______ on the plane",
+    "sentence_jp": "飛行機の乗客と乗組員"
+  },
+  {
+    "en": "chase",
+    "jp": "①～を追いかける ②追跡",
+    "sentence": "After a long _______, I finally caught the thief.",
+    "sentence_jp": "長い追跡の末，私はようやくその泥棒を捕まえた．"
+  },
+  {
+    "en": "proceed",
+    "jp": "①（順を追って）進む ②（to do）（さらに続けて）～する",
+    "sentence": "First, please _______ to Gate 3.",
+    "sentence_jp": "まず，3 番ゲートへお進みください．"
+  },
+  {
+    "en": "fade",
+    "jp": "（色，記憶などが）薄れる",
+    "sentence": "Childhood memories _______ as time passes.",
+    "sentence_jp": "時が過ぎるとともに子どものころの記憶は薄れる．"
+  },
+  {
+    "en": "dissolve",
+    "jp": "①溶ける ②～を溶かす ③（議会など）を解散する",
+    "sentence": "Salt _______ in hot water.",
+    "sentence_jp": "塩が熱湯に溶ける．"
+  },
+  {
+    "en": "float",
+    "jp": "①浮かぶ ②～を浮かべる",
+    "sentence": "_______ on the sea",
+    "sentence_jp": "海面に浮かぶ"
+  },
+  {
+    "en": "sink",
+    "jp": "①沈む ②～を沈める ③（台所の）流し",
+    "sentence": "Oil does not _______ in water.",
+    "sentence_jp": "油は水に沈まない．"
+  },
+  {
+    "en": "bounce",
+    "jp": "①（ボールなどが）跳ねる ②（宛先不明で）～を返送する",
+    "sentence": "_______ ball bounced over the wall.",
+    "sentence_jp": "ボールは跳ねて壁を越えた．"
+  },
+  {
+    "en": "transform",
+    "jp": "①～を（大幅に）変える ②（大幅に）変形する，変身する",
+    "sentence": "_______ the old house into a restaurant",
+    "sentence_jp": "古い家を改造してレストランにする"
+  },
+  {
+    "en": "shift",
+    "jp": "①（考え方の）転換 ②（勤務の）交替",
+    "sentence": "a paradigm _______",
+    "sentence_jp": "パラダイムシフト（理論的枠組の転換）"
+  },
+  {
+    "en": "modify",
+    "jp": "～を修正する",
+    "sentence": "_______ modified（GM） foods",
+    "sentence_jp": "遺伝子組み換え（遺伝子上修正された）食品"
+  },
+  {
+    "en": "revise",
+    "jp": "（制度，予測，論文など）を修正する，改正する",
+    "sentence": "_______ the education system",
+    "sentence_jp": "教育制度を改正する"
+  },
+  {
+    "en": "enhance",
+    "jp": "～を向上させる",
+    "sentence": "_______ my aesthetic sense",
+    "sentence_jp": "美意識を磨く（向上させる）"
+  },
+  {
+    "en": "lower",
+    "jp": "～を下げる",
+    "sentence": "_______ the voting age from 20 to 18",
+    "sentence_jp": "選挙権年齢を20 歳から18 歳に引き下げる"
+  },
+  {
+    "en": "voyage",
+    "jp": "航海，船旅",
+    "sentence": "make a _______ around the world",
+    "sentence_jp": "世界一周の船旅をする"
+  },
+  {
+    "en": "confirm",
+    "jp": "①～を確認する ②～を裏付ける",
+    "sentence": "_______ the booking",
+    "sentence_jp": "予約を確認する"
+  },
+  {
+    "en": "ensure",
+    "jp": "～を確実にする",
+    "sentence": "Please _______ that you leave[×will leave] nothing behind.",
+    "sentence_jp": "忘れ物をしないように気をつけ（確実にし）てください．"
+  },
+  {
+    "en": "address",
+    "jp": "①～に取り組む ②～に呼びかける ③演説 ④住所",
+    "sentence": "_______ an environmental problem",
+    "sentence_jp": "環境問題に取り組む"
+  },
+  {
+    "en": "approach",
+    "jp": "①（to ～）（～への）取り組み方，接近 ②～に取り組む，接近する",
+    "sentence": "a new _______ to teaching languages",
+    "sentence_jp": "言語教育への新たな取り組み方"
+  },
+  {
+    "en": "resolve",
+    "jp": "①～を解決する ②（to do）（～する）決心をする",
+    "sentence": "_______ the problem on my own",
+    "sentence_jp": "自分でその問題を解決する"
+  },
+  {
+    "en": "settle",
+    "jp": "①（紛争など）を解決する ②～を置く，据える ③定住する ④（on ～）（～を）決める",
+    "sentence": "_______ the dispute",
+    "sentence_jp": "その紛争を解決する"
+  },
+  {
+    "en": "enrich",
+    "jp": "～を豊かにする",
+    "sentence": "_______ the soil",
+    "sentence_jp": "その土壌を豊かにする"
+  },
+  {
+    "en": "warn",
+    "jp": "～に警告する ②（of［against］ ～）（～に対して）警告する",
+    "sentence": "_______ him to follow the rules",
+    "sentence_jp": "規則に従うよう彼に警告する"
+  },
+  {
+    "en": "force",
+    "jp": "①～に強いる ②力，武力",
+    "sentence": "the _______ of nature",
+    "sentence_jp": "自然の（種々の）力"
+  },
+  {
+    "en": "appeal",
+    "jp": "①（to ～）（～に）訴える ②魅力，人気 ③（for ～）（～に対する）訴え",
+    "sentence": "_______ to our emotions",
+    "sentence_jp": "私たちの感情に訴えかける"
+  },
+  {
+    "en": "applause",
+    "jp": "拍手〈不可算〉",
+    "sentence": "receive hearty _______",
+    "sentence_jp": "心からの拍手をもらう"
+  },
+  {
+    "en": "leap",
+    "jp": "①跳ぶ ②躍進，急増",
+    "sentence": "by[in] _______ and bounds",
+    "sentence_jp": "飛躍的に"
+  },
+  {
+    "en": "grab",
+    "jp": "①（ぐいっと）～をつかむ ②（急いで食事，睡眠）をとる",
+    "sentence": "_______ him by the neck",
+    "sentence_jp": "彼の首根っこをつかむ"
+  },
+  {
+    "en": "seize",
+    "jp": "①～をつかむ ②（麻薬など）を押収する，（犯人）を捕らえる",
+    "sentence": "_______ her by the shoulder",
+    "sentence_jp": "彼女の肩をつかむ"
+  },
+  {
+    "en": "cast",
+    "jp": "①～を投げる ②（光など）を投げかける ③～に役を与える",
+    "sentence": "_______ a net around a school of tuna",
+    "sentence_jp": "マグロの群れに網を投げ入れる"
+  },
+  {
+    "en": "stun",
+    "jp": "①～を気絶させる ②～をぼう然とさせる",
+    "sentence": "_______ him with a blow",
+    "sentence_jp": "殴って彼を気絶させる"
+  },
+  {
+    "en": "illuminate",
+    "jp": "①～を照らす ②（問題など）を解明する",
+    "sentence": "_______ the difficult issue",
+    "sentence_jp": "その難しい問題を解明する"
+  },
+  {
+    "en": "uncover",
+    "jp": "～を明らかにする，暴く",
+    "sentence": "_______ a scandal",
+    "sentence_jp": "不祥事を暴く"
+  },
+  {
+    "en": "mend",
+    "jp": "～を修繕する",
+    "sentence": "_______ a tear in my jacket",
+    "sentence_jp": "上着のほころびを修繕する"
+  },
+  {
+    "en": "react",
+    "jp": "（to ～）（～に）反応する",
+    "sentence": "_______ angrily to the news",
+    "sentence_jp": "その知らせに怒りの反応を示す（怒って反応する）"
+  },
+  {
+    "en": "endure",
+    "jp": "（長期にわたり）～に耐える",
+    "sentence": "_______ years of suffering",
+    "sentence_jp": "長年の苦労に耐える"
+  },
+  {
+    "en": "bind",
+    "jp": "～を結びつける，縛る",
+    "sentence": "_______ two communities together",
+    "sentence_jp": "2つの社会を結びつける"
+  },
+  {
+    "en": "encounter",
+    "jp": "①～に偶然出会う ②（問題，反対など）に遭う ③出会い",
+    "sentence": "_______ a bear in the woods",
+    "sentence_jp": "森の中でクマに遭遇する"
+  },
+  {
+    "en": "trace",
+    "jp": "①～を捜し出す ②～の追跡調査をする ③（微妙な）跡",
+    "sentence": "_______ a missing person",
+    "sentence_jp": "行方不明の人を捜し出す"
+  },
+  {
+    "en": "undergo",
+    "jp": "～を経験する",
+    "sentence": "_______ cosmetic surgery",
+    "sentence_jp": "美容整形手術を受ける"
+  },
+  {
+    "en": "seal",
+    "jp": "①～を密封する ②（personal －）印鑑，ハンコ",
+    "sentence": "a _______ container",
+    "sentence_jp": "密閉容器"
+  },
+  {
+    "en": "incorporate",
+    "jp": "～を取り入れる",
+    "sentence": "_______ words have been incorporated into English from Latin.",
+    "sentence_jp": "多くの単語がラテン語から英語に取り入れられた．"
+  },
+  {
+    "en": "emerge",
+    "jp": "①（隠れていたものが）現れる ②（国家などが）台頭する",
+    "sentence": "_______ from the darkness",
+    "sentence_jp": "暗闇から現れる"
+  },
+  {
+    "en": "unfold",
+    "jp": "①展開する，はっきりしてくる ②～を広げる",
+    "sentence": "How will that drama _______?",
+    "sentence_jp": "そのドラマはどのように展開するのだろう．"
+  },
+  {
+    "en": "derive",
+    "jp": "①（from ～）（～に）由来する ②～を引き出す，得る",
+    "sentence": "This word _______ from Latin.",
+    "sentence_jp": "この単語はラテン語に由来する．"
+  },
+  {
+    "en": "generate",
+    "jp": "（電気，利益など）を生み出す",
+    "sentence": "_______ electricity",
+    "sentence_jp": "電気を生み出す"
+  },
+  {
+    "en": "possess",
+    "jp": "～を所有している",
+    "sentence": "Every child _______ a range of abilities.",
+    "sentence_jp": "どの子も多彩な才能を所有している．"
+  },
+  {
+    "en": "retain",
+    "jp": "～を保持する",
+    "sentence": "_______ her beauty",
+    "sentence_jp": "彼女の美しさを保持する"
+  },
+  {
+    "en": "secure",
+    "jp": "①（場所，地位，契約など）を確保する ②安全で，守られて",
+    "sentence": "_______ a window seat",
+    "sentence_jp": "窓側の席を確保する"
+  },
+  {
+    "en": "capture",
+    "jp": "①～を捕らえる ②捕獲，（敵地の）攻略",
+    "sentence": "avoid _______",
+    "sentence_jp": "逮捕を逃れる"
+  },
+  {
+    "en": "monitor",
+    "jp": "①～を監視する ②（コンピュータの）画面",
+    "sentence": "_______ my blood pressure",
+    "sentence_jp": "（一定期間）血圧をチェックする"
+  },
+  {
+    "en": "investigate",
+    "jp": "①（研究班などが）～を調査する ②（警察が）～を捜査する",
+    "sentence": "_______ the ecology of eels",
+    "sentence_jp": "ウナギの生態を調査する"
+  },
+  {
+    "en": "detect",
+    "jp": "～を探知する，（病気など）を発見する，（うそなど）を見抜く",
+    "sentence": "_______ a small amount of drug",
+    "sentence_jp": "微量の麻薬を検出する"
+  },
+  {
+    "en": "inquiry",
+    "jp": "①（into ～）（～の）調査 ②質問，問い合わせ",
+    "sentence": "an _______ into his background",
+    "sentence_jp": "彼の身元調査"
+  },
+  {
+    "en": "specialize",
+    "jp": "（in ～） ①〈英〉（～を）専攻する ②（～を）専門にする",
+    "sentence": "_______ in business administration",
+    "sentence_jp": "経営学を専攻する"
+  },
+  {
+    "en": "semester",
+    "jp": "（米，日本などの2学期制の）学期",
+    "sentence": "the first _______",
+    "sentence_jp": "前期"
+  },
+  {
+    "en": "biology",
+    "jp": "生物学",
+    "sentence": "_______ is the scientific study of living things.",
+    "sentence_jp": "生物学は生物の科学的な研究です．"
+  },
+  {
+    "en": "ecology",
+    "jp": "生態（学）",
+    "sentence": "the _______ of jellyfish",
+    "sentence_jp": "クラゲの生態"
+  },
+  {
+    "en": "philosophy",
+    "jp": "①（学問としての）哲学〈不可算〉 ②人生哲学，考え方〈可算〉",
+    "sentence": "the _______ of Aristotle",
+    "sentence_jp": "アリストテレスの哲学"
+  },
+  {
+    "en": "geography",
+    "jp": "地理（学）",
+    "sentence": "a great discovery in _______",
+    "sentence_jp": "地理上の偉大な発見"
+  },
+  {
+    "en": "institution",
+    "jp": "①（大学，病院などの）機関 ②（結婚などの）制度",
+    "sentence": "educational _______",
+    "sentence_jp": "教育機関"
+  },
+  {
+    "en": "faculty",
+    "jp": "①（生まれ持った）能力 ②（大学の）学部 ③（大学の）全教員",
+    "sentence": "the _______ of hearing",
+    "sentence_jp": "聴力"
+  },
+  {
+    "en": "intermediate",
+    "jp": "①（授業・教材が）中級の ②中間の",
+    "sentence": "an _______[×middle] course",
+    "sentence_jp": "中級の講座"
+  },
+  {
+    "en": "notion",
+    "jp": "考え",
+    "sentence": "the _______ that smoking is cool",
+    "sentence_jp": "タバコを吸うのは格好いいという考え"
+  },
+  {
+    "en": "concept",
+    "jp": "概念，考え",
+    "sentence": "the _______ of time",
+    "sentence_jp": "時間の概念"
+  },
+  {
+    "en": "meditation",
+    "jp": "①瞑想 ②熟考",
+    "sentence": "sit in Zen _______",
+    "sentence_jp": "座禅（座って行う瞑想）を組む"
+  },
+  {
+    "en": "insight",
+    "jp": "①（into ～）（～に対する）洞察（力） ②見識",
+    "sentence": "an _______ into human nature",
+    "sentence_jp": "人間性への洞察"
+  },
+  {
+    "en": "caution",
+    "jp": "①用心 ②警告 ③～に注意［警告］を与える",
+    "sentence": "act with _______",
+    "sentence_jp": "用心して行動する"
+  },
+  {
+    "en": "will",
+    "jp": "①意志 ②遺書",
+    "sentence": "against my _______",
+    "sentence_jp": "意志に反して"
+  },
+  {
+    "en": "option",
+    "jp": "選択肢，選択（の自由）",
+    "sentence": "consider other _______",
+    "sentence_jp": "ほかの選択肢を考える"
+  },
+  {
+    "en": "prospect",
+    "jp": "見通し",
+    "sentence": "I was both excited and worried at the _______ of becoming a father.",
+    "sentence_jp": "自分が父親になることを考える（見通す）と，わくわくすると同時に不安だった．"
+  },
+  {
+    "en": "cherish",
+    "jp": "～を大切にする，胸に抱く",
+    "sentence": "_______ the memories of that day",
+    "sentence_jp": "その日の思い出を大切にする"
+  },
+  {
+    "en": "intend",
+    "jp": "（to do）～するつもりだ",
+    "sentence": "_______ to see the movie",
+    "sentence_jp": "その映画を見るつもりだ"
+  },
+  {
+    "en": "suspect",
+    "jp": "①（that S V）～ではないかと思う ②～に嫌疑をかける ③容疑者",
+    "sentence": "The police _______ that she stole the money.",
+    "sentence_jp": "警察は彼女がそのお金を盗んだのではないかと思っている．"
+  },
+  {
+    "en": "identify",
+    "jp": "①～を特定する，《生物》～を同定する ②（A with B）（A）を（B と）同一視する ③（with ～）（～と）一体感をもつ，（～に）なりきる",
+    "sentence": "_______ the fingerprints",
+    "sentence_jp": "その指紋を特定する"
+  },
+  {
+    "en": "permit",
+    "jp": "①～を許可する ②許可証",
+    "sentence": "a work _______",
+    "sentence_jp": "就業許可証"
+  },
+  {
+    "en": "acknowledge",
+    "jp": "～を認める",
+    "sentence": "_______ the need for change",
+    "sentence_jp": "変化の必要性を認める"
+  },
+  {
+    "en": "perceive",
+    "jp": "①（A as B）（A）を（B だと）認識する ②～を知覚する",
+    "sentence": "_______ the discovery as a major breakthrough",
+    "sentence_jp": "その発見を飛躍的進歩と認識する"
+  },
+  {
+    "en": "evaluate",
+    "jp": "～を（正しく）評価する",
+    "sentence": "_______ the employees’ performances",
+    "sentence_jp": "従業員の仕事ぶりを（正しく）評価する"
+  },
+  {
+    "en": "cultivate",
+    "jp": "①～を耕す ②～を育む ③～を磨く",
+    "sentence": "_______ the land",
+    "sentence_jp": "土地を耕す"
+  },
+  {
+    "en": "shade",
+    "jp": "①日陰，（絵画，写真の）陰の部分，ブラインド ②（－s）（意味などの）わずかな違い",
+    "sentence": "sit in the _______",
+    "sentence_jp": "日陰に座る"
+  },
+  {
+    "en": "breeze",
+    "jp": "そよ風",
+    "sentence": "feel a sea _______",
+    "sentence_jp": "海のそよ風を感じる"
+  },
+  {
+    "en": "desert",
+    "jp": "①砂漠 ②～を見捨てる",
+    "sentence": "the Sahara _______",
+    "sentence_jp": "サハラ砂漠"
+  },
+  {
+    "en": "fog",
+    "jp": "霧",
+    "sentence": "The dense _______ cleared.",
+    "sentence_jp": "濃い霧が晴れた．"
+  },
+  {
+    "en": "moisture",
+    "jp": "湿気，水分",
+    "sentence": "_______ is essential for keeping your skin youthful.",
+    "sentence_jp": "湿り気は皮膚を若々しく保つのに不可欠だ．"
+  },
+  {
+    "en": "damp",
+    "jp": "湿った，じめじめした",
+    "sentence": "My shirt is still _______.",
+    "sentence_jp": "シャツがまだ湿っている．"
+  },
+  {
+    "en": "path",
+    "jp": "（小）道",
+    "sentence": "follow a _______ to the mountaintop",
+    "sentence_jp": "山頂への道をたどる"
+  },
+  {
+    "en": "trail",
+    "jp": "①山道 ②跡 ③（a － of destruction）（破壊の）爪跡",
+    "sentence": "a hiking _______[×course]",
+    "sentence_jp": "ハイキングコース（山道）"
+  },
+  {
+    "en": "stream",
+    "jp": "①小川 ②（a － of ～）（～の）流れ",
+    "sentence": "a mountain _______",
+    "sentence_jp": "谷川"
+  },
+  {
+    "en": "tide",
+    "jp": "①潮（の干満），潮流 ②時流",
+    "sentence": "The _______ is in[out].",
+    "sentence_jp": "満［干］潮である．"
+  },
+  {
+    "en": "reef",
+    "jp": "（岩や砂の）礁",
+    "sentence": "coral _______",
+    "sentence_jp": "サンゴ礁"
+  },
+  {
+    "en": "habitat",
+    "jp": "生息地",
+    "sentence": "the natural _______ of sea lions",
+    "sentence_jp": "アシカの自然生息地"
+  },
+  {
+    "en": "volcano",
+    "jp": "火山",
+    "sentence": "That _______ erupted last year.",
+    "sentence_jp": "その火山は昨年噴火した．"
+  },
+  {
+    "en": "mine",
+    "jp": "①鉱山 ②地雷（＝lándmine）",
+    "sentence": "work in a coal _______",
+    "sentence_jp": "炭鉱で働く"
+  },
+  {
+    "en": "swallow",
+    "jp": "①ツバメ ②～を飲み込む",
+    "sentence": "One _______ does not make a summer.",
+    "sentence_jp": "《ことわざ》早合点は禁物（ツバメ一羽で夏になるわけではない）．"
+  },
+  {
+    "en": "web",
+    "jp": "①（クモの）巣 ②インターネット（www＝the World Wide Web）",
+    "sentence": "weave a _______",
+    "sentence_jp": "（クモが）巣を張る"
+  },
+  {
+    "en": "mosquito",
+    "jp": "蚊",
+    "sentence": "I was bitten by a _______.",
+    "sentence_jp": "蚊に刺された．"
+  },
+  {
+    "en": "cattle",
+    "jp": "ウシ",
+    "sentence": "_______, sheep, and other domestic animals",
+    "sentence_jp": "ウシ，ヒツジとそれ以外の家畜"
+  },
+  {
+    "en": "kitten",
+    "jp": "子ネコ",
+    "sentence": "a lost _______",
+    "sentence_jp": "迷子の子ネコ"
+  },
+  {
+    "en": "organism",
+    "jp": "生物",
+    "sentence": "microscopic _______ （＝microorganisms）",
+    "sentence_jp": "微生物"
+  },
+  {
+    "en": "wildlife",
+    "jp": "野生生物",
+    "sentence": "the _______ of the Galapagos Islands",
+    "sentence_jp": "ガラパゴス諸島の野生生物"
+  },
+  {
+    "en": "beast",
+    "jp": "野獣",
+    "sentence": "the lion, the king of _______",
+    "sentence_jp": "百獣の王ライオン"
+  },
+  {
+    "en": "ape",
+    "jp": "類人猿",
+    "sentence": "great _______",
+    "sentence_jp": "大型（×偉大な）類人猿"
+  },
+  {
+    "en": "flock",
+    "jp": "①（鳥，羊の）群れ ②群れる",
+    "sentence": "a _______ of crows",
+    "sentence_jp": "カラスの一群"
+  },
+  {
+    "en": "vein",
+    "jp": "静脈",
+    "sentence": "inject a medicine into a _______",
+    "sentence_jp": "静脈に薬を注射する"
+  },
+  {
+    "en": "breed",
+    "jp": "①繁殖する ②～を繁殖させる ③～を引き起こす ④品種，血統",
+    "sentence": "Rabbits _______ all year round.",
+    "sentence_jp": "ウサギは年中繁殖する．"
+  },
+  {
+    "en": "reproduce",
+    "jp": "①繁殖する ②～を繁殖させる ③（音，絵など）を再現する",
+    "sentence": "The virus can _______ rapidly.",
+    "sentence_jp": "ウイルスは急速に繁殖する．"
+  },
+  {
+    "en": "talkative",
+    "jp": "おしゃべりの",
+    "sentence": "a _______ taxi driver",
+    "sentence_jp": "おしゃべりなタクシー運転手"
+  },
+  {
+    "en": "earnest",
+    "jp": "①真面目な ②（in －）真面目（に）",
+    "sentence": "make an _______ effort",
+    "sentence_jp": "真面目に努力する"
+  },
+  {
+    "en": "diligent",
+    "jp": "勤勉な",
+    "sentence": "a _______ student",
+    "sentence_jp": "勤勉な学生"
+  },
+  {
+    "en": "principal",
+    "jp": "①主要な ②〈米〉校長",
+    "sentence": "the country’s _______ export",
+    "sentence_jp": "その国の主な輸出品"
+  },
+  {
+    "en": "prime",
+    "jp": "①（目標，容疑者などが）最重要な ②素数",
+    "sentence": "the _______ minister of Japan",
+    "sentence_jp": "日本の首相"
+  },
+  {
+    "en": "definite",
+    "jp": "明確な",
+    "sentence": "a _______ answer",
+    "sentence_jp": "明確な答え"
+  },
+  {
+    "en": "evident",
+    "jp": "明らかな",
+    "sentence": "It was _______ that he was not telling the truth.",
+    "sentence_jp": "彼が真実を言っていないのは明らかだった．"
+  },
+  {
+    "en": "prominent",
+    "jp": "①（物が）目立った ②（人が）著名な，重要な",
+    "sentence": "The statue stood in a _______ position.",
+    "sentence_jp": "その像は目立った場所にあった．"
+  },
+  {
+    "en": "marked",
+    "jp": "（名詞の前で）際立った，著しい",
+    "sentence": "a _______ change in his behavior",
+    "sentence_jp": "彼の行動の際立った変化"
+  },
+  {
+    "en": "grace",
+    "jp": "①優美さ ②（say －）（食事の前後の）感謝の祈り（をささげる）",
+    "sentence": "the _______ of the dancer",
+    "sentence_jp": "そのダンサーの優美さ"
+  },
+  {
+    "en": "charm",
+    "jp": "①魅力 ②（a good-luck －）お守り，まじない",
+    "sentence": "have enormous _______",
+    "sentence_jp": "大きな魅力がある"
+  },
+  {
+    "en": "fancy",
+    "jp": "①高級な ②〈英〉～が欲しい，～したい ③～と思う",
+    "sentence": "a _______ French restaurant",
+    "sentence_jp": "高級なフレンチレストラン"
+  },
+  {
+    "en": "rational",
+    "jp": "理性的な",
+    "sentence": "make a _______ decision",
+    "sentence_jp": "理性的な決定をする"
+  },
+  {
+    "en": "magnificent",
+    "jp": "壮大な，素晴らしい",
+    "sentence": "a _______ view of Mt. Fuji",
+    "sentence_jp": "富士山の壮大な眺め"
+  },
+  {
+    "en": "superior",
+    "jp": "①（be － to ～）（～）より優れている ②上役，上司",
+    "sentence": "Your bike is _______ to mine.",
+    "sentence_jp": "君の自転車は私のより優れている．"
+  },
+  {
+    "en": "loyal",
+    "jp": "（to ～）（～に）忠実な",
+    "sentence": "a _______ supporter of the team",
+    "sentence_jp": "そのチームの忠実な支持者"
+  },
+  {
+    "en": "horrible",
+    "jp": "（物，天気などが）とてもひどい，ぞっとする",
+    "sentence": "That fish looks _______ but tastes terrific.",
+    "sentence_jp": "その魚は見た目はひどいが，味はすばらしい．"
+  },
+  {
+    "en": "miserable",
+    "jp": "悲惨な，とても不幸な",
+    "sentence": "lead a _______ life",
+    "sentence_jp": "悲惨な生活を送る"
+  },
+  {
+    "en": "dull",
+    "jp": "①退屈な ②切れ味が悪い ③（人，感覚などが）鈍い",
+    "sentence": "a _______ TV program",
+    "sentence_jp": "退屈なテレビ番組"
+  },
+  {
+    "en": "nasty",
+    "jp": "（人，物，発言などが）不快な",
+    "sentence": "leave a _______ taste in my mouth",
+    "sentence_jp": "後味が悪い（口の中に嫌な味を残す）"
+  },
+  {
+    "en": "insane",
+    "jp": "正気でない",
+    "sentence": "Have you gone _______?",
+    "sentence_jp": "正気を失ったか？"
+  },
+  {
+    "en": "ridiculous",
+    "jp": "ばかげた",
+    "sentence": "I believe that lowering the voting age is a _______ idea.",
+    "sentence_jp": "選挙年齢を引き下げるのはばかげた考えだと思う．"
+  },
+  {
+    "en": "rotten",
+    "jp": "腐った",
+    "sentence": "_______ eggs",
+    "sentence_jp": "腐った卵"
+  },
+  {
+    "en": "notorious",
+    "jp": "（for ～）（～で）悪名高い",
+    "sentence": "That clothing shop is _______ for its poor quality.",
+    "sentence_jp": "その服屋は低品質で悪名高い．"
+  },
+  {
+    "en": "evil",
+    "jp": "①（道徳的に）悪い ②悪",
+    "sentence": "an _______ spirit",
+    "sentence_jp": "悪霊"
+  },
+  {
+    "en": "mess",
+    "jp": "①乱雑 ②（with ～）（～を）からかう，ちょっかいを出す",
+    "sentence": "make a _______ of the room",
+    "sentence_jp": "部屋をめちゃくちゃにする"
+  },
+  {
+    "en": "vast",
+    "jp": "①（地域，土地が）広大な ②（数量が）莫大な",
+    "sentence": "a _______ palace",
+    "sentence_jp": "広大な宮殿"
+  },
+  {
+    "en": "huge",
+    "jp": "巨大な",
+    "sentence": "a _______ elephant",
+    "sentence_jp": "巨大なゾウ"
+  },
+  {
+    "en": "tiny",
+    "jp": "とても小さな",
+    "sentence": "a _______ hole in the wall",
+    "sentence_jp": "壁に開いたとても小さな穴"
+  },
+  {
+    "en": "sphere",
+    "jp": "①球体 ②領域，範囲",
+    "sentence": "a perfect _______",
+    "sentence_jp": "完全な球体"
+  },
+  {
+    "en": "strip",
+    "jp": "①細長い一片 ②（罰として）～から奪う ③裸になる",
+    "sentence": "a _______ of paper",
+    "sentence_jp": "細長い紙片"
+  },
+  {
+    "en": "vessel",
+    "jp": "①（血液を通す）管 ②（大型の）船",
+    "sentence": "a blood _______ in the brain",
+    "sentence_jp": "脳内の血管"
+  },
+  {
+    "en": "internal",
+    "jp": "①内部の，体内の ②国内の",
+    "sentence": "_______ organs",
+    "sentence_jp": "内臓"
+  },
+  {
+    "en": "mobile",
+    "jp": "①流動的な ②携帯電話",
+    "sentence": "a _______ society",
+    "sentence_jp": "流動的な社会"
+  },
+  {
+    "en": "steep",
+    "jp": "①（坂などが）険しい ②（増減が）急な，（価格などが）異常に高い",
+    "sentence": "climb _______ stone steps",
+    "sentence_jp": "急な石段を上る"
+  },
+  {
+    "en": "intense",
+    "jp": "（感情，競争などが）強烈な",
+    "sentence": "_______ pressure to succeed",
+    "sentence_jp": "成功しなければという強烈な重圧"
+  },
+  {
+    "en": "inevitable",
+    "jp": "避けられない，必然的な",
+    "sentence": "an _______ result",
+    "sentence_jp": "避けられない結果"
+  },
+  {
+    "en": "neutral",
+    "jp": "①中立の ②中立",
+    "sentence": "a demilitarized _______ zone",
+    "sentence_jp": "非武装中立地帯"
+  },
+  {
+    "en": "brief",
+    "jp": "①手短な，簡潔な ②要約",
+    "sentence": "have a _______ conversation with her",
+    "sentence_jp": "彼女と少し話（手短な会話）をする"
+  },
+  {
+    "en": "bare",
+    "jp": "①むき出しの ②最低限の",
+    "sentence": "Her arms were _______.",
+    "sentence_jp": "彼女の腕はむき出しだった．"
+  },
+  {
+    "en": "mutual",
+    "jp": "①（感情，行為が）相互の ②（友だち，趣味などが）共通の",
+    "sentence": "promote _______ understanding",
+    "sentence_jp": "相互の理解を促進させる"
+  },
+  {
+    "en": "potential",
+    "jp": "①潜在的な ②潜在能力，可能性〈不可算〉",
+    "sentence": "a _______ customer",
+    "sentence_jp": "将来の（潜在的な）顧客"
+  },
+  {
+    "en": "tough",
+    "jp": "①たくましい，頑強な ②骨の折れる，厳しい",
+    "sentence": "a _______ soldier",
+    "sentence_jp": "たくましい兵士"
+  },
+  {
+    "en": "conventional",
+    "jp": "従来の，慣習的な",
+    "sentence": "_______ weapons",
+    "sentence_jp": "通常兵器（従来の兵器）"
+  },
+  {
+    "en": "supreme",
+    "jp": "最高の",
+    "sentence": "the _______ Court",
+    "sentence_jp": "最高裁判所"
+  },
+  {
+    "en": "resemble",
+    "jp": "～に似ている",
+    "sentence": "Peter _______ his father in every way.",
+    "sentence_jp": "ピーターはあらゆる点で父親に似ている．"
+  },
+  {
+    "en": "contrary",
+    "jp": "①（on the －）それどころか ②（－ to A）（A とは）反対に ③（（名詞） to the －）それとは反対の～",
+    "sentence": "Roger is not stupid; on the _______, he is a genius.",
+    "sentence_jp": "ロジャーはばかではない．それどころか天才だ．"
+  },
+  {
+    "en": "category",
+    "jp": "範疇",
+    "sentence": "fall into the same _______",
+    "sentence_jp": "同じ範疇に属する"
+  },
+  {
+    "en": "scope",
+    "jp": "範囲",
+    "sentence": "limit the _______ of our activities",
+    "sentence_jp": "私たちの活動範囲を制限する"
+  },
+  {
+    "en": "given",
+    "jp": "①（時間，量などが）定められた ②～を考慮すると",
+    "sentence": "a _______ period of time",
+    "sentence_jp": "ある一定の期間"
+  },
+  {
+    "en": "peculiar",
+    "jp": "①（to ～）（～に）固有の ②独特な，変な",
+    "sentence": "a custom _______ to Japan",
+    "sentence_jp": "日本固有の習慣"
+  },
+  {
+    "en": "sufficient",
+    "jp": "十分な",
+    "sentence": "_______ food for everyone",
+    "sentence_jp": "全員に行き渡る十分な食料"
+  },
+  {
+    "en": "numerous",
+    "jp": "多くの",
+    "sentence": "on _______ occasions",
+    "sentence_jp": "多くの場面で"
+  },
+  {
+    "en": "substantial",
+    "jp": "①かなりの，たくさんの ②内容のある，重要な",
+    "sentence": "a _______ breakfast",
+    "sentence_jp": "ボリュームのある（たくさんの）朝食"
+  },
+  {
+    "en": "unit",
+    "jp": "単位",
+    "sentence": "The family is the smallest _______ of society.",
+    "sentence_jp": "家族は社会の最小の単位だ．"
+  },
+  {
+    "en": "diameter",
+    "jp": "直径",
+    "sentence": "two meters in _______",
+    "sentence_jp": "直径2メートル"
+  },
+  {
+    "en": "arithmetic",
+    "jp": "算術",
+    "sentence": "reading, writing, and _______",
+    "sentence_jp": "読み，書き，算盤（←算術）"
+  },
+  {
+    "en": "quantity",
+    "jp": "量",
+    "sentence": "Quality is more important than _______.",
+    "sentence_jp": "量より質が重要だ．"
+  },
+  {
+    "en": "deficiency",
+    "jp": "欠乏，不足",
+    "sentence": "a vitamin _______",
+    "sentence_jp": "ビタミンの欠乏"
+  },
+  {
+    "en": "maximum",
+    "jp": "最大限",
+    "sentence": "This will cost a _______ of 1,000 dollars.",
+    "sentence_jp": "これは最大で1,000 ドルかかります．"
+  },
+  {
+    "en": "bunch",
+    "jp": "（花や鍵などの）束，（ブドウなどの）房",
+    "sentence": "a _______ of flowers",
+    "sentence_jp": "花束"
+  },
+  {
+    "en": "lessen",
+    "jp": "～を減らす",
+    "sentence": "_______ the risk of human error",
+    "sentence_jp": "人為的ミスのリスクを軽減する"
+  },
+  {
+    "en": "era",
+    "jp": "時代",
+    "sentence": "the dawn of a new _______",
+    "sentence_jp": "新たな時代の幕開け"
+  },
+  {
+    "en": "session",
+    "jp": "①（活動の）期間 ②（議会などの）会期 ③（ある活動の）集まり",
+    "sentence": "have a Q&A _______",
+    "sentence_jp": "質疑応答の時間をとる"
+  },
+  {
+    "en": "pause",
+    "jp": "①休止 ②休止する",
+    "sentence": "begin to speak after a long _______",
+    "sentence_jp": "長い休止の後に話し始める"
+  },
+  {
+    "en": "annual",
+    "jp": "①年に1 度の ②1 年間の（予算，収入など）",
+    "sentence": "the _______ report",
+    "sentence_jp": "年次報告書"
+  },
+  {
+    "en": "eternal",
+    "jp": "（命や若さなど）永遠の",
+    "sentence": "Do you believe in _______ life?",
+    "sentence_jp": "永遠の命を信じますか．"
+  },
+  {
+    "en": "initial",
+    "jp": "①最初の ②頭文字，イニシャル",
+    "sentence": "the _______ stages of the disease",
+    "sentence_jp": "その病気の初期（最初の）段階"
+  },
+  {
+    "en": "prior",
+    "jp": "①（to ～）～より前の ②（時間・順序が）前の",
+    "sentence": "_______ to the meeting",
+    "sentence_jp": "会議の前に"
+  },
+  {
+    "en": "subsequent",
+    "jp": "（to ～）（～に）続いて起こる",
+    "sentence": "_______ events",
+    "sentence_jp": "続いて起こった出来事"
+  },
+  {
+    "en": "meanwhile",
+    "jp": "①その間 ②（対比を示して）その一方で",
+    "sentence": "My wife was shopping. _______, I was waiting in the car.",
+    "sentence_jp": "妻は買い物をしていた．その間，私は車で待っていた．"
+  },
+  {
+    "en": "routine",
+    "jp": "①決まりきった仕事 ②日常の",
+    "sentence": "Sweeping the street in front of my house is part of my daily _______.",
+    "sentence_jp": "家の前の道を掃くことは日課の一部です．"
+  },
+  {
+    "en": "souvenir",
+    "jp": "土産，記念品",
+    "sentence": "a _______ of my trip to France",
+    "sentence_jp": "（私の）フランス旅行の記念品"
+  },
+  {
+    "en": "brick",
+    "jp": "①れんが ②〈英〉（おもちゃの）積み木",
+    "sentence": "a _______ house",
+    "sentence_jp": "れんが造りの家"
+  },
+  {
+    "en": "pole",
+    "jp": "①棒，さお，柱 ②（天体，地球の）極",
+    "sentence": "a ten-foot bamboo _______",
+    "sentence_jp": "10フィートの竹ざお"
+  },
+  {
+    "en": "mischief",
+    "jp": "いたずら〈不可算〉",
+    "sentence": "a child who loves _______",
+    "sentence_jp": "いたずらが好きな子ども"
+  },
+  {
+    "en": "superstition",
+    "jp": "迷信",
+    "sentence": "the _______ that rooms numbered 4[×No. 4 rooms] are unlucky",
+    "sentence_jp": "4号室は不吉であるという迷信"
+  },
+  {
+    "en": "storage",
+    "jp": "貯蔵，保管〈不可算〉",
+    "sentence": "I need more _______ space.",
+    "sentence_jp": "もっと多くの貯蔵スペースが必要だ．"
+  },
+  {
+    "en": "shelter",
+    "jp": "①避難（所） ②住居",
+    "sentence": "take _______ from the rain",
+    "sentence_jp": "雨宿りする（雨から避難する）"
+  },
+  {
+    "en": "garment",
+    "jp": "衣類",
+    "sentence": "Delicate _______ should be handwashed.",
+    "sentence_jp": "傷みやすい衣類は手洗いしなければならない．"
+  },
+  {
+    "en": "canal",
+    "jp": "運河",
+    "sentence": "the Suez _______",
+    "sentence_jp": "スエズ運河"
+  },
+  {
+    "en": "cabinet",
+    "jp": "①戸棚 ②（the C－）内閣",
+    "sentence": "put the forms in the filing _______",
+    "sentence_jp": "書類整理棚にその書類をしまう"
+  },
+  {
+    "en": "incident",
+    "jp": "（主に不快な）出来事",
+    "sentence": "The _______ occurred at around 3 a.m.",
+    "sentence_jp": "その出来事は午前3 時ごろに起きた．"
+  },
+  {
+    "en": "circumstance",
+    "jp": "（通例 －s）状況，事情",
+    "sentence": "The _______ are changing minute by minute.",
+    "sentence_jp": "状況は刻一刻と変化している．"
+  },
+  {
+    "en": "fetch",
+    "jp": "（主に〈英〉）～を取って来る",
+    "sentence": "_______ the children from the kindergarten",
+    "sentence_jp": "幼稚園に子どものお迎えに行く"
+  },
+  {
+    "en": "distribute",
+    "jp": "①～を分配する，配る ②（be －d）分布している",
+    "sentence": "_______ handouts[×prints]",
+    "sentence_jp": "プリントを配る"
+  },
+  {
+    "en": "purchase",
+    "jp": "①～を購入する ②購入（品）",
+    "sentence": "_______ an apartment in N.Y.",
+    "sentence_jp": "ニューヨークでマンションを購入する"
+  },
+  {
+    "en": "statue",
+    "jp": "像",
+    "sentence": "Let’s meet at the Hachiko _______ at ten.",
+    "sentence_jp": "10時にハチ公（像）の所で会いましょう．"
+  },
+  {
+    "en": "sculpture",
+    "jp": "彫刻",
+    "sentence": "The Thinker is a _______ by Rodin.",
+    "sentence_jp": "「考える人」はロダンの彫刻だ．"
+  },
+  {
+    "en": "myth",
+    "jp": "①（俗説という意味での）神話 ②（古代の）神話",
+    "sentence": "a _______ about the safety of nuclear power plants",
+    "sentence_jp": "原子力発電所の安全神話"
+  },
+  {
+    "en": "craft",
+    "jp": "①工芸（品） ②（職人の）技術 ③船，乗り物〈単複同形〉",
+    "sentence": "traditional _______ of this region",
+    "sentence_jp": "この地域の伝統的な民芸品"
+  },
+  {
+    "en": "journal",
+    "jp": "①雑誌，専門誌 ②（公的な）日誌，日記",
+    "sentence": "an academic _______",
+    "sentence_jp": "学会誌"
+  },
+  {
+    "en": "encyclopedia",
+    "jp": "百科事典",
+    "sentence": "a thirty-volume _______",
+    "sentence_jp": "30巻からなる百科事典"
+  },
+  {
+    "en": "heaven",
+    "jp": "①天国 ②（the －s）空",
+    "sentence": "go to _______",
+    "sentence_jp": "天国に行く"
+  },
+  {
+    "en": "funeral",
+    "jp": "葬式",
+    "sentence": "attend a _______",
+    "sentence_jp": "葬式に出席する"
+  },
+  {
+    "en": "soul",
+    "jp": "①魂 ②（慣用句あるいは否定文で）人",
+    "sentence": "the _______ of the dead",
+    "sentence_jp": "死者の魂"
+  },
+  {
+    "en": "priest",
+    "jp": "神父，僧侶，牧師，聖職者",
+    "sentence": "The _______ crossed himself, saying “Amen.”",
+    "sentence_jp": "神父は「アーメン」と言いながら十字を切った．"
+  },
+  {
+    "en": "faith",
+    "jp": "①（主に宗教上の）信仰 ②信頼",
+    "sentence": "my _______ in God",
+    "sentence_jp": "私の神への信仰"
+  },
+  {
+    "en": "sacred",
+    "jp": "神聖な",
+    "sentence": "Cows are _______ animals to the Hindus.",
+    "sentence_jp": "ウシはヒンドゥー教徒にとって神聖な動物だ．"
+  },
+  {
+    "en": "divine",
+    "jp": "神の",
+    "sentence": "a _______ message",
+    "sentence_jp": "神のお告げ"
+  },
+  {
+    "en": "Muslim",
+    "jp": "イスラム教徒",
+    "sentence": "_______ fast during Ramadan.",
+    "sentence_jp": "イスラム教徒はラマダンの間，断食をする．"
+  },
+  {
+    "en": "context",
+    "jp": "①文脈 ②状況",
+    "sentence": "The meaning of “charge” depends on the _______.",
+    "sentence_jp": "“charge” の意味は文脈によって決まる．"
+  },
+  {
+    "en": "singular",
+    "jp": "①単数の ②（褒めて）比類なき ③奇妙な",
+    "sentence": "a _______ form",
+    "sentence_jp": "単数形"
+  },
+  {
+    "en": "command",
+    "jp": "①言語を操る力 ②命令 ③～を集める ④～を見渡せる",
+    "sentence": "have a good _______ of Chinese",
+    "sentence_jp": "中国語が達者だ（操る力がある）"
+  },
+  {
+    "en": "instance",
+    "jp": "例",
+    "sentence": "Take Lucy, for _______.",
+    "sentence_jp": "たとえばルーシーを例に取り上げよう．"
+  },
+  {
+    "en": "dialogue",
+    "jp": "①（本，劇，映画の中の）会話 ②対談，対話",
+    "sentence": "a book of English _______",
+    "sentence_jp": "英会話集"
+  },
+  {
+    "en": "usage",
+    "jp": "語法",
+    "sentence": "grammar and _______",
+    "sentence_jp": "文法と語法"
+  },
+  {
+    "en": "vowel",
+    "jp": "母音",
+    "sentence": "“Banana” has three _______.",
+    "sentence_jp": "“banana” には母音が3つある．"
+  },
+  {
+    "en": "pronoun",
+    "jp": "代名詞",
+    "sentence": "a personal _______",
+    "sentence_jp": "人称代名詞"
+  },
+  {
+    "en": "accent",
+    "jp": "①訛 ②アクセント",
+    "sentence": "He speaks English with a strong German _______.",
+    "sentence_jp": "彼は強いドイツ語訛の英語を話す．"
+  },
+  {
+    "en": "outline",
+    "jp": "～の要点を述べる，～の輪郭を描く",
+    "sentence": "_______ the plan to him",
+    "sentence_jp": "彼にその計画の概要を説明する"
+  },
+  {
+    "en": "remote",
+    "jp": "①（地理的に）辺鄙な ②（時間，関係などが）遠い",
+    "sentence": "live in a _______ village",
+    "sentence_jp": "辺鄙な村に住んでいる"
+  },
+  {
+    "en": "ambition",
+    "jp": "（強い）願望，野望",
+    "sentence": "achieve[fulfill, realize] my _______ to be a pilot",
+    "sentence_jp": "パイロットになるという望みを叶える"
+  },
+  {
+    "en": "temper",
+    "jp": "①気性 ②（熟語で）平静（な気分）",
+    "sentence": "have a violent _______",
+    "sentence_jp": "荒い気性だ"
+  },
+  {
+    "en": "affection",
+    "jp": "愛情",
+    "sentence": "feel great _______ for my grandfather",
+    "sentence_jp": "祖父に強い愛情を感じる"
+  },
+  {
+    "en": "enthusiasm",
+    "jp": "情熱，熱意",
+    "sentence": "with great _______",
+    "sentence_jp": "やる気満々で"
+  },
+  {
+    "en": "rage",
+    "jp": "①激怒 ②（戦争，病気が）激しく続く，猛威をふるう",
+    "sentence": "Allan was red with _______.",
+    "sentence_jp": "アランは怒りで真っ赤になっていた．"
+  },
+  {
+    "en": "incredible",
+    "jp": "信じられない",
+    "sentence": "_______ news",
+    "sentence_jp": "信じられない知らせ"
+  },
+  {
+    "en": "chuckle",
+    "jp": "①くすくす笑う ②くすくす笑うこと",
+    "sentence": "_______ at the memory",
+    "sentence_jp": "思い出し笑いをする"
+  },
+  {
+    "en": "dare",
+    "jp": "①（to do）思い切って～する ②（do）思い切って～する",
+    "sentence": "_______ one dared to argue.",
+    "sentence_jp": "② 言い争う勇気がある人はいなかった（誰も思い切って言い争わなかった）．"
+  },
+  {
+    "en": "scream",
+    "jp": "①悲鳴を上げる ②悲鳴",
+    "sentence": "_______ in horror",
+    "sentence_jp": "恐怖で悲鳴を上げる"
+  },
+  {
+    "en": "soothe",
+    "jp": "①（人）をなだめる ②（痛みなど）をやわらげる",
+    "sentence": "_______ a crying baby",
+    "sentence_jp": "泣いている赤ん坊をなだめる"
+  },
+  {
+    "en": "tempt",
+    "jp": "～を誘惑する",
+    "sentence": "The sunny weather _______ me to go out.",
+    "sentence_jp": "晴れていたので，外出したくなった"
+  },
+  {
+    "en": "scold",
+    "jp": "～を𠮟る",
+    "sentence": "_______ my son for making a mess of his room",
+    "sentence_jp": "部屋を散らかしたことに対して息子を𠮟る"
+  },
+  {
+    "en": "oppress",
+    "jp": "～を圧迫する，虐げる",
+    "sentence": "The dictator _______ his people for many years.",
+    "sentence_jp": "その独裁者は長年にわたり人民を虐げた．"
+  },
+  {
+    "en": "threaten",
+    "jp": "①～を脅かす ②（to do）～すると脅す ③～の恐れがある",
+    "sentence": "_______ the survival of wildlife",
+    "sentence_jp": "野生動物の生存を脅かす"
+  },
+  {
+    "en": "mourn",
+    "jp": "～を嘆く，悼む",
+    "sentence": "_______ the death of the Pope",
+    "sentence_jp": "ローマ教皇の死を悼む"
+  },
+  {
+    "en": "sacrifice",
+    "jp": "①～を犠牲にする ②犠牲",
+    "sentence": "_______ my family for my career",
+    "sentence_jp": "仕事のために家族を犠牲にする"
+  },
+  {
+    "en": "curse",
+    "jp": "①災いの元 ②呪い ③～を呪う，ののしる",
+    "sentence": "Gambling is a _______ on his life.",
+    "sentence_jp": "ギャンブルは彼にとって災いの元だ．"
+  },
+  {
+    "en": "stem",
+    "jp": "①（from ～）（～が）原因である ②茎，幹，ワイングラスの脚",
+    "sentence": "Diabetes often _______ from an unhealthy lifestyle.",
+    "sentence_jp": "糖尿病は不健康な生活習慣が原因であることが多い．"
+  },
+  {
+    "en": "trigger",
+    "jp": "①～のきっかけになる，～を誘発する ②（銃の）引き金 ③（比喩的に）きっかけ",
+    "sentence": "_______ an allergic reaction",
+    "sentence_jp": "アレルギー反応を引き起こす"
+  },
+  {
+    "en": "consequence",
+    "jp": "①結果 ②（of －） 重要性",
+    "sentence": "have serious _______",
+    "sentence_jp": "深刻な結果を招く"
+  },
+  {
+    "en": "process",
+    "jp": "①過程 ②～を加工する，処理する",
+    "sentence": "The production _______ is fully automated.",
+    "sentence_jp": "生産過程は完全オートメーション化されている．"
+  },
+  {
+    "en": "resort",
+    "jp": "①（to ～）（～に）訴える ②行楽地 ③手段",
+    "sentence": "_______ to violence",
+    "sentence_jp": "暴力に訴える"
+  },
+  {
+    "en": "formula",
+    "jp": "①方法 ②秘けつ ③（数学，化学などの）式，公式",
+    "sentence": "a new _______",
+    "sentence_jp": "新しい方法"
+  },
+  {
+    "en": "procedure",
+    "jp": "手続き，手順",
+    "sentence": "the _______ for applying for a passport",
+    "sentence_jp": "パスポート申請の手順"
+  },
+  {
+    "en": "extraordinary",
+    "jp": "①並外れた ②臨時の（会議など） ③特命の（大使など）",
+    "sentence": "have an _______ memory",
+    "sentence_jp": "並外れた記憶力を有する"
+  },
+  {
+    "en": "absolute",
+    "jp": "絶対的な",
+    "sentence": "in _______ silence",
+    "sentence_jp": "静粛に（絶対的な沈黙で）"
+  },
+  {
+    "en": "overwhelming",
+    "jp": "圧倒的な",
+    "sentence": "an _______ majority",
+    "sentence_jp": "圧倒的多数"
+  },
+  {
+    "en": "altogether",
+    "jp": "①完全に ②全部で",
+    "sentence": "This old custom has vanished _______.",
+    "sentence_jp": "この古い習慣は完全になくなった．"
+  },
+  {
+    "en": "entire",
+    "jp": "すべての",
+    "sentence": "The _______ audience stood up to cheer.",
+    "sentence_jp": "観客は総立ちで（すべての観客が立って）歓声を上げた．"
+  },
+  {
+    "en": "tremendous",
+    "jp": "すさまじい",
+    "sentence": "a _______ reaction from the crowd",
+    "sentence_jp": "群集からのすさまじい反応"
+  },
+  {
+    "en": "sheer",
+    "jp": "①（数量やサイズを強調して）とてつもない～の ②まったくの",
+    "sentence": "the _______ number of visitors",
+    "sentence_jp": "非常に多くの（とてつもない数の）訪問者"
+  },
+  {
+    "en": "partial",
+    "jp": "①部分的な ②不公平な ③（to ～）（～が）大好きで",
+    "sentence": "a _______ success",
+    "sentence_jp": "部分的な成功"
+  },
+  {
+    "en": "barely",
+    "jp": "①かろうじて ②ほとんど～ない",
+    "sentence": "_______ enough food to go around",
+    "sentence_jp": "かろうじて行き渡るだけの食物"
+  },
+  {
+    "en": "approximately",
+    "jp": "（数量が）おおよそ，約",
+    "sentence": "_______ one million yen",
+    "sentence_jp": "およそ100万円"
+  },
+  {
+    "en": "frequently",
+    "jp": "頻繁に",
+    "sentence": "Buses run _______ to the airport.",
+    "sentence_jp": "空港へのバスの便は頻繁にあります．"
+  },
+  {
+    "en": "apparently",
+    "jp": "①見たところでは ②〈口語〉どうやら～らしい",
+    "sentence": "two _______ unrelated incidents",
+    "sentence_jp": "一見無関係に見える2つの出来事"
+  },
+  {
+    "en": "merely",
+    "jp": "①（主に名詞の前で）～にすぎない ②（動詞などの前で）単に",
+    "sentence": "Jill is _______ a child.",
+    "sentence_jp": "ジルは子どもにすぎない．"
+  },
+  {
+    "en": "nevertheless",
+    "jp": "それにもかかわらず",
+    "sentence": "It was snowing; _______ we continued to work in the fields.",
+    "sentence_jp": "雪が降っていた．それにもかかわらず，私たちは畑仕事をし続けた．"
+  },
+  {
+    "en": "somehow",
+    "jp": "①何らかの方法で ②何らかの理由で，どういうわけか",
+    "sentence": "escape from the box _______",
+    "sentence_jp": "何らかの方法でその箱から脱出する"
+  },
+  {
+    "en": "thus",
+    "jp": "①それゆえ（に） ②このように",
+    "sentence": "This problem is very simple and _______ easy to solve.",
+    "sentence_jp": "この問題はとても単純なので，それゆえ，解くのは簡単だ．"
+  },
+  {
+    "en": "afterward(s)",
+    "jp": "①（文頭で）その後 ②（～ afterward）～の後",
+    "sentence": "_______, he apologized.",
+    "sentence_jp": "その後，彼は謝罪した．"
+  },
+  {
+    "en": "on behalf of ～",
+    "jp": "①～を代表して ②～のために",
+    "sentence": "_______ on behalf of the company",
+    "sentence_jp": "会社を代表して話す"
   }
 ];
   const nameInput = document.getElementById("playerName");
@@ -1284,7 +2994,7 @@ const words = [
     if (currentScore == null) { alert("スコアがありません。"); return; } // 安全策
     // Firestoreへ追加
     try {
-      await addDoc(collection(db, "scores3"), {
+      await addDoc(collection(db, "scores4"), {
         name,
         score: currentScore,
         createdAt: serverTimestamp()
@@ -1302,7 +3012,7 @@ const words = [
   async function loadTop5() {
     leaderboard.innerHTML = '<li>ランキング読み込み中...</li>'; // 読み込み中の表示
     try {
-      const ref = collection(db, "scores3");
+      const ref = collection(db, "scores4");
       const q = query(ref, orderBy("score", "desc"), orderBy("createdAt", "asc"), limit(5));
       const snap = await getDocs(q);
       const rows = snap.docs.map((d, i) => {
@@ -1333,6 +3043,7 @@ const words = [
 </script>
  </body>
 </html>
+
 
 
 
